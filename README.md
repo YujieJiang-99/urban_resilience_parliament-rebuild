@@ -1,4 +1,5 @@
 # Urban Resilience Parliament Rebuild
+<img width="2475" height="1573" alt="image" src="https://github.com/user-attachments/assets/8367d5c2-a9ff-4b82-9bea-520333aad681" />
 
 This is a minimal research demo for the B-1 module: multi-agent parliamentary
 assessment of city resilience.
