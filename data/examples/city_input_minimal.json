@@ -1,0 +1,10 @@
+{
+  "city_id": "hk-demo",
+  "city_name": "Hong Kong",
+  "country_or_region": "Hong Kong SAR, China",
+  "summary": "A compact coastal city used as a placeholder case for future evidence collection.",
+  "evidence": {
+    "population_note": "placeholder only",
+    "hazard_context": "typhoon, coastal flooding, heat"
+  }
+}

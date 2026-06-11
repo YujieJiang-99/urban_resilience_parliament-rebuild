@@ -1,0 +1,90 @@
+{
+  "request": {
+    "purpose": "indicator_subset",
+    "base_url": "https://api.zhizengzeng.com/v1",
+    "endpoint": "/chat/completions",
+    "model": "glm-4-flash",
+    "timeout": 180,
+    "prompt_chars": 12377,
+    "has_api_key": true
+  },
+  "attempts": 1,
+  "raw_response": "{\"choices\":[{\"finish_reason\":\"stop\",\"index\":0,\"message\":{\"content\":\"{\\\"indicators\\\":{\\\"ind__cap_abs__Building_quality_control_index\\\":{\\\"score\\\":85,\\\"reasoning\\\":\\\"Hong Kong has a robust building safety governance system with high risk-informed code adoption and strict permit review processes, but there is room for improvement in retrofitting existing buildings and informal settlements.\\\"},\\\"ind__cap_abs__Ecosystem_vitality\\\":{\\\"score\\\":70,\\\"reasoning\\\":\\\"While Hong Kong has significant green and blue space, air quality issues like high PM2.5 levels and the urban heat-island effect pose challenges to ecosystem health.\\\"},\\\"ind__cap_abs__GINI_Index\\\":{\\\"score\\\":65,\\\"reasoning\\\":\\\"Income distribution in Hong Kong is somewhat unequal, with notable disparities between affluent districts and slums, and challenges in integrating migrants and informal residents.\\\"},\\\"ind__cap_abs__Global_Peace_Index\\\":{\\\"score\\\":80,\\\"reasoning\\\":\\\"Hong Kong has relatively low crime rates and a strong sense of social cohesion, but there are concerns about ethnic tensions and the perception of safety among vulnerable groups.\\\"},\\\"ind__cap_abs__Housing_deprivation\\\":{\\\"score\\\":75,\\\"reasoning\\\":\\\"Housing in Hong Kong is characterized by high costs and limited affordability, with challenges in providing adequate floor area per person and ensuring structural safety.\\\"},\\\"ind__cap_abs__Infrastructure_quality\\\":{\\\"score\\\":90,\\\"reasoning\\\":\\\"Hong Kong's infrastructure is generally of high quality, with reliable power grids and public transport, although there are concerns about the resilience of aging assets.\\\"},\\\"ind__cap_resp__2G_3G_and_4G_network_coverage\\\":{\\\"score\\\":95,\\\"reasoning\\\":\\\"Hong Kong has extensive mobile network coverage with high reliability and affordability, making it accessible to a wide range of users.\\\"},\\\"ind__cap_resp__Control_of_corruption\\\":{\\\"score\\\":85,\\\"reasoning\\\":\\\"Hong Kong has a relatively transparent and corruption-free governance system, with strong audit independence and open fiscal data.\\\"},\\\"ind__cap_resp__Gross_tiol_Savings\\\":{\\\"score\\\":80,\\\"reasoning\\\":\\\"Hong Kong has a moderate level of fiscal savings and emergency funds, with access to commercial banking and insurance, but there is room for improvement in social protection coverage.\\\"},\\\"ind__cap_resp__Logistics_performance_index\\\":{\\\"score\\\":90,\\\"reasoning\\\":\\\"Hong Kong is a major logistics hub with efficient port and airport operations, although there are challenges in customs and inspection processes.\\\"},\\\"ind__cap_resp__Macroeconomic_stability\\\":{\\\"score\\\":85,\\\"reasoning\\\":\\\"Hong Kong's economy is stable with low inflation and a diverse economic structure, but there are risks associated with dependence on a few key industries.\\\"},\\\"ind__cap_resp__Political_stability\\\":{\\\"score\\\":90,\\\"reasoning\\\":\\\"Hong Kong has a stable political environment with predictable leadership transitions and strong institutional continuity.\\\"},\\\"ind__cap_rec__Access_to_quality_education\\\":{\\\"score\\\":75,\\\"reasoning\\\":\\\"Access to quality education in Hong Kong is generally good, but there are disparities between different districts and challenges in serving migrant and low-income children.\\\"},\\\"ind__cap_rec__Economic_complexity_index\\\":{\\\"score\\\":85,\\\"reasoning\\\":\\\"Hong Kong's economy is complex and diverse, with a strong presence of high-value-added activities and innovation ecosystems.\\\"},\\\"ind__cap_rec__Government_Effectiveness_Index\\\":{\\\"score\\\":90,\\\"reasoning\\\":\\\"Hong Kong's municipal governance is effective, with strong planning and service-delivery capacity, and a focus on data-driven decision making.\\\"},\\\"ind__cap_rec__Human_Development_Index\\\":{\\\"score\\\":85,\\\"reasoning\\\":\\\"Hong Kong has a high Human Development Index, with good life expectancy, education, and income levels, but there are disparities between different groups within the city.\\\"},\\\"ind__cap_rec__Research_Development\\\":{\\\"score\\\":80,\\\"reasoning\\\":\\\"Hong Kong has a strong R\\u0026D capacity and innovation ecosystem, with a high concentration of research institutions and a significant output of patents.\\\"},\\\"ind__cap_rec__Technology_achievement_index\\\":{\\\"score\\\":90,\\\"reasoning\\\":\\\"Hong Kong has advanced digital infrastructure and technology achievements, with high ICT penetration and a strong focus on digital government and smart-city deployment.\\\"}}}\",\"role\":\"assistant\"}}],\"created\":1781205325,\"id\":\"202606120314040848eedae37e4d03\",\"model\":\"glm-4-flash\",\"object\":\"chat.completion\",\"request_id\":\"202606120314040848eedae37e4d03\",\"usage\":{\"completion_tokens\":1019,\"prompt_tokens\":3256,\"total_tokens\":4275}}",
+  "extracted_content": "{\"indicators\":{\"ind__cap_abs__Building_quality_control_index\":{\"score\":85,\"reasoning\":\"Hong Kong has a robust building safety governance system with high risk-informed code adoption and strict permit review processes, but there is room for improvement in retrofitting existing buildings and informal settlements.\"},\"ind__cap_abs__Ecosystem_vitality\":{\"score\":70,\"reasoning\":\"While Hong Kong has significant green and blue space, air quality issues like high PM2.5 levels and the urban heat-island effect pose challenges to ecosystem health.\"},\"ind__cap_abs__GINI_Index\":{\"score\":65,\"reasoning\":\"Income distribution in Hong Kong is somewhat unequal, with notable disparities between affluent districts and slums, and challenges in integrating migrants and informal residents.\"},\"ind__cap_abs__Global_Peace_Index\":{\"score\":80,\"reasoning\":\"Hong Kong has relatively low crime rates and a strong sense of social cohesion, but there are concerns about ethnic tensions and the perception of safety among vulnerable groups.\"},\"ind__cap_abs__Housing_deprivation\":{\"score\":75,\"reasoning\":\"Housing in Hong Kong is characterized by high costs and limited affordability, with challenges in providing adequate floor area per person and ensuring structural safety.\"},\"ind__cap_abs__Infrastructure_quality\":{\"score\":90,\"reasoning\":\"Hong Kong's infrastructure is generally of high quality, with reliable power grids and public transport, although there are concerns about the resilience of aging assets.\"},\"ind__cap_resp__2G_3G_and_4G_network_coverage\":{\"score\":95,\"reasoning\":\"Hong Kong has extensive mobile network coverage with high reliability and affordability, making it accessible to a wide range of users.\"},\"ind__cap_resp__Control_of_corruption\":{\"score\":85,\"reasoning\":\"Hong Kong has a relatively transparent and corruption-free governance system, with strong audit independence and open fiscal data.\"},\"ind__cap_resp__Gross_tiol_Savings\":{\"score\":80,\"reasoning\":\"Hong Kong has a moderate level of fiscal savings and emergency funds, with access to commercial banking and insurance, but there is room for improvement in social protection coverage.\"},\"ind__cap_resp__Logistics_performance_index\":{\"score\":90,\"reasoning\":\"Hong Kong is a major logistics hub with efficient port and airport operations, although there are challenges in customs and inspection processes.\"},\"ind__cap_resp__Macroeconomic_stability\":{\"score\":85,\"reasoning\":\"Hong Kong's economy is stable with low inflation and a diverse economic structure, but there are risks associated with dependence on a few key industries.\"},\"ind__cap_resp__Political_stability\":{\"score\":90,\"reasoning\":\"Hong Kong has a stable political environment with predictable leadership transitions and strong institutional continuity.\"},\"ind__cap_rec__Access_to_quality_education\":{\"score\":75,\"reasoning\":\"Access to quality education in Hong Kong is generally good, but there are disparities between different districts and challenges in serving migrant and low-income children.\"},\"ind__cap_rec__Economic_complexity_index\":{\"score\":85,\"reasoning\":\"Hong Kong's economy is complex and diverse, with a strong presence of high-value-added activities and innovation ecosystems.\"},\"ind__cap_rec__Government_Effectiveness_Index\":{\"score\":90,\"reasoning\":\"Hong Kong's municipal governance is effective, with strong planning and service-delivery capacity, and a focus on data-driven decision making.\"},\"ind__cap_rec__Human_Development_Index\":{\"score\":85,\"reasoning\":\"Hong Kong has a high Human Development Index, with good life expectancy, education, and income levels, but there are disparities between different groups within the city.\"},\"ind__cap_rec__Research_Development\":{\"score\":80,\"reasoning\":\"Hong Kong has a strong R&D capacity and innovation ecosystem, with a high concentration of research institutions and a significant output of patents.\"},\"ind__cap_rec__Technology_achievement_index\":{\"score\":90,\"reasoning\":\"Hong Kong has advanced digital infrastructure and technology achievements, with high ICT penetration and a strong focus on digital government and smart-city deployment.\"}}}",
+  "parsed_json": {
+    "indicators": {
+      "ind__cap_abs__Building_quality_control_index": {
+        "score": 85.0,
+        "reasoning": "Hong Kong has a robust building safety governance system with high risk-informed code adoption and strict permit review processes, but there is room for improvement in retrofitting existing buildings and informal settlements."
+      },
+      "ind__cap_abs__Ecosystem_vitality": {
+        "score": 70.0,
+        "reasoning": "While Hong Kong has significant green and blue space, air quality issues like high PM2.5 levels and the urban heat-island effect pose challenges to ecosystem health."
+      },
+      "ind__cap_abs__GINI_Index": {
+        "score": 65.0,
+        "reasoning": "Income distribution in Hong Kong is somewhat unequal, with notable disparities between affluent districts and slums, and challenges in integrating migrants and informal residents."
+      },
+      "ind__cap_abs__Global_Peace_Index": {
+        "score": 80.0,
+        "reasoning": "Hong Kong has relatively low crime rates and a strong sense of social cohesion, but there are concerns about ethnic tensions and the perception of safety among vulnerable groups."
+      },
+      "ind__cap_abs__Housing_deprivation": {
+        "score": 75.0,
+        "reasoning": "Housing in Hong Kong is characterized by high costs and limited affordability, with challenges in providing adequate floor area per person and ensuring structural safety."
+      },
+      "ind__cap_abs__Infrastructure_quality": {
+        "score": 90.0,
+        "reasoning": "Hong Kong's infrastructure is generally of high quality, with reliable power grids and public transport, although there are concerns about the resilience of aging assets."
+      },
+      "ind__cap_resp__2G_3G_and_4G_network_coverage": {
+        "score": 95.0,
+        "reasoning": "Hong Kong has extensive mobile network coverage with high reliability and affordability, making it accessible to a wide range of users."
+      },
+      "ind__cap_resp__Control_of_corruption": {
+        "score": 85.0,
+        "reasoning": "Hong Kong has a relatively transparent and corruption-free governance system, with strong audit independence and open fiscal data."
+      },
+      "ind__cap_resp__Gross_tiol_Savings": {
+        "score": 80.0,
+        "reasoning": "Hong Kong has a moderate level of fiscal savings and emergency funds, with access to commercial banking and insurance, but there is room for improvement in social protection coverage."
+      },
+      "ind__cap_resp__Logistics_performance_index": {
+        "score": 90.0,
+        "reasoning": "Hong Kong is a major logistics hub with efficient port and airport operations, although there are challenges in customs and inspection processes."
+      },
+      "ind__cap_resp__Macroeconomic_stability": {
+        "score": 85.0,
+        "reasoning": "Hong Kong's economy is stable with low inflation and a diverse economic structure, but there are risks associated with dependence on a few key industries."
+      },
+      "ind__cap_resp__Political_stability": {
+        "score": 90.0,
+        "reasoning": "Hong Kong has a stable political environment with predictable leadership transitions and strong institutional continuity."
+      },
+      "ind__cap_rec__Access_to_quality_education": {
+        "score": 75.0,
+        "reasoning": "Access to quality education in Hong Kong is generally good, but there are disparities between different districts and challenges in serving migrant and low-income children."
+      },
+      "ind__cap_rec__Economic_complexity_index": {
+        "score": 85.0,
+        "reasoning": "Hong Kong's economy is complex and diverse, with a strong presence of high-value-added activities and innovation ecosystems."
+      },
+      "ind__cap_rec__Government_Effectiveness_Index": {
+        "score": 90.0,
+        "reasoning": "Hong Kong's municipal governance is effective, with strong planning and service-delivery capacity, and a focus on data-driven decision making."
+      },
+      "ind__cap_rec__Human_Development_Index": {
+        "score": 85.0,
+        "reasoning": "Hong Kong has a high Human Development Index, with good life expectancy, education, and income levels, but there are disparities between different groups within the city."
+      },
+      "ind__cap_rec__Research_Development": {
+        "score": 80.0,
+        "reasoning": "Hong Kong has a strong R&D capacity and innovation ecosystem, with a high concentration of research institutions and a significant output of patents."
+      },
+      "ind__cap_rec__Technology_achievement_index": {
+        "score": 90.0,
+        "reasoning": "Hong Kong has advanced digital infrastructure and technology achievements, with high ICT penetration and a strong focus on digital government and smart-city deployment."
+      }
+    }
+  }
+}

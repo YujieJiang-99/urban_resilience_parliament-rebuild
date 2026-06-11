@@ -1,0 +1,43 @@
+{
+  "city_id": "hk-demo",
+  "first_rounds": [
+    {
+      "agent_id": "agent_a",
+      "round_number": 1,
+      "scores": [
+        {
+          "indicator": "ind__cap_abs__Building_quality_control_index",
+          "score": 72,
+          "rationale": "Strong institutions, but cross-sector coordination requires review.",
+          "confidence": 0.6
+        }
+      ],
+      "notes": "Minimal example only; full runs should include all 18 indicators."
+    }
+  ],
+  "second_rounds": [
+    {
+      "agent_id": "agent_a",
+      "round_number": 2,
+      "scores": [
+        {
+          "indicator": "ind__cap_abs__Building_quality_control_index",
+          "score": 74,
+          "rationale": "Revised upward after seeing anonymous peer comments.",
+          "confidence": 0.65
+        }
+      ],
+      "notes": "Shape example, not a complete assessment."
+    }
+  ],
+  "referee_review": {
+    "flagged_items": [
+      "Full referee review is not implemented in this minimal example."
+    ],
+    "adjustment_notes": "No adjustment applied."
+  },
+  "indicator_scores": {
+    "ind__cap_abs__Building_quality_control_index": 74
+  },
+  "parliamentary_score": 74
+}

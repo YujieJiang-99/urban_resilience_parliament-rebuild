@@ -1,0 +1,17 @@
+{
+  "city_id": "hk-demo",
+  "round": 1,
+  "stage": "llm_smoke_test",
+  "agent_id": "infrastructure_planner",
+  "indicators": {
+    "ind__cap_abs__Building_quality_control_index": {
+      "score": 67.0,
+      "reasoning": "The score reflects the overall effectiveness of building safety governance in Hong Kong, considering factors such as risk-informed code adoption, permit review strictness, inspection coverage, regulatory enforcement, retrofitting of buildings, occupancy control, routine maintenance, and post-disaster habitability assessment."
+    },
+    "ind__cap_abs__Ecosystem_vitality": {
+      "score": 67.0,
+      "reasoning": "The score indicates the health and resilience of urban and peri-urban ecosystems in Hong Kong, taking into account green and blue space coverage, air and water quality, urban heat-island mitigation, brownfield and pollution burden, watershed and coastal protective buffers, and tree-canopy and permeable-surface ratios."
+    }
+  },
+  "model": "glm-4-flash"
+}
