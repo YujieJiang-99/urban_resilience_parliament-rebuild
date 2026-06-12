@@ -1,0 +1,81 @@
+{
+  "city_id": "hk-demo",
+  "city_name": "Hong Kong",
+  "round": 1,
+  "stage": "independent_scoring",
+  "model": "qwen3.5-flash",
+  "indicators": {
+    "ind__cap_abs__Building_quality_control_index": {
+      "score": 0.6768,
+      "reasoning": "Hong Kong is scored by qwen3.5-flash; the mock backend treats Building safety governance as a cap_abs indicator. anchored against Hong Kong=0.9474 / Tokyo=1.0000 / London=0.8947. target city appears in anchors: Hong Kong=0.9474."
+    },
+    "ind__cap_abs__Ecosystem_vitality": {
+      "score": 0.665,
+      "reasoning": "Hong Kong is scored by qwen3.5-flash; the mock backend treats Urban ecosystem health as a cap_abs indicator. anchored against Singapore=0.9474 / London=0.8421 / Niamey=0.0000."
+    },
+    "ind__cap_abs__GINI_Index": {
+      "score": 0.6879,
+      "reasoning": "Hong Kong is scored by qwen3.5-flash; the mock backend treats Urban income equity as a cap_abs indicator. anchored against Hong Kong=0.6316 / Niamey=0.0000 / Kabul=0.0526. target city appears in anchors: Hong Kong=0.6316."
+    },
+    "ind__cap_abs__Global_Peace_Index": {
+      "score": 0.695,
+      "reasoning": "Hong Kong is scored by qwen3.5-flash; the mock backend treats Urban safety and social cohesion as a cap_abs indicator. anchored against Singapore=1.0000 / London=0.7368 / Niamey=0.0000."
+    },
+    "ind__cap_abs__Housing_deprivation": {
+      "score": 0.71,
+      "reasoning": "Hong Kong is scored by qwen3.5-flash; the mock backend treats Housing habitability as a cap_abs indicator. anchored against Singapore=0.9474 / London=0.7368 / Niamey=0.0000."
+    },
+    "ind__cap_abs__Infrastructure_quality": {
+      "score": 0.65,
+      "reasoning": "Hong Kong is scored by qwen3.5-flash; the mock backend treats Infrastructure quality as a cap_abs indicator. anchored against Singapore=1.0000 / London=0.8421 / Niamey=0.0000."
+    },
+    "ind__cap_resp__2G_3G_and_4G_network_coverage": {
+      "score": 0.675,
+      "reasoning": "Hong Kong is scored by qwen3.5-flash; the mock backend treats Urban mobile connectivity as a cap_resp indicator. anchored against Tokyo=0.9474 / London=0.8421 / Niamey=0.0000."
+    },
+    "ind__cap_resp__Control_of_corruption": {
+      "score": 0.69,
+      "reasoning": "Hong Kong is scored by qwen3.5-flash; the mock backend treats Municipal public integrity as a cap_resp indicator. anchored against Tokyo=0.8947 / Niamey=0.0526 / Kabul=0.0000."
+    },
+    "ind__cap_resp__Gross_tiol_Savings": {
+      "score": 0.705,
+      "reasoning": "Hong Kong is scored by qwen3.5-flash; the mock backend treats Local financial buffer capacity as a cap_resp indicator. anchored against Singapore=1.0000 / Tokyo=0.9474 / London=0.7895."
+    },
+    "ind__cap_resp__Logistics_performance_index": {
+      "score": 0.72,
+      "reasoning": "Hong Kong is scored by qwen3.5-flash; the mock backend treats Logistics performance index as a cap_resp indicator. anchored against Singapore=1.0000 / Kabul=0.0000 / Shenzhen=0.9474."
+    },
+    "ind__cap_resp__Macroeconomic_stability": {
+      "score": 0.66,
+      "reasoning": "Hong Kong is scored by qwen3.5-flash; the mock backend treats Local economic stability as a cap_resp indicator. anchored against Singapore=1.0000 / Niamey=0.0526 / Kabul=0.0000."
+    },
+    "ind__cap_resp__Political_stability": {
+      "score": 0.675,
+      "reasoning": "Hong Kong is scored by qwen3.5-flash; the mock backend treats Local governance stability as a cap_resp indicator. anchored against Tokyo=0.9474 / Niamey=0.0526 / Kabul=0.0000."
+    },
+    "ind__cap_rec__Access_to_quality_education": {
+      "score": 0.67,
+      "reasoning": "Hong Kong is scored by qwen3.5-flash; the mock backend treats Access to quality education as a cap_rec indicator. anchored against Singapore=0.8947 / London=1.0000 / Niamey=0.1053."
+    },
+    "ind__cap_rec__Economic_complexity_index": {
+      "score": 0.685,
+      "reasoning": "Hong Kong is scored by qwen3.5-flash; the mock backend treats Economic complexity index as a cap_rec indicator. anchored against Tokyo=1.0000 / Niamey=0.0526 / Kabul=0.0000."
+    },
+    "ind__cap_rec__Government_Effectiveness_Index": {
+      "score": 0.7,
+      "reasoning": "Hong Kong is scored by qwen3.5-flash; the mock backend treats Government Effectiveness Index as a cap_rec indicator. anchored against Singapore=1.0000 / Tokyo=0.9474 / Niamey=0.0000."
+    },
+    "ind__cap_rec__Human_Development_Index": {
+      "score": 0.6668,
+      "reasoning": "Hong Kong is scored by qwen3.5-flash; the mock backend treats Human Development Index as a cap_rec indicator. anchored against Hong Kong=0.9474 / Niamey=0.0526 / Kabul=0.0000. target city appears in anchors: Hong Kong=0.9474."
+    },
+    "ind__cap_rec__Research_Development": {
+      "score": 0.6755,
+      "reasoning": "Hong Kong is scored by qwen3.5-flash; the mock backend treats Research Development as a cap_rec indicator. anchored against Hong Kong=0.8421 / Tokyo=1.0000 / London=0.9474. target city appears in anchors: Hong Kong=0.8421."
+    },
+    "ind__cap_rec__Technology_achievement_index": {
+      "score": 0.6968,
+      "reasoning": "Hong Kong is scored by qwen3.5-flash; the mock backend treats Technology achievement index as a cap_rec indicator. anchored against Hong Kong=0.9474 / Niamey=0.0526 / Kabul=0.0000. target city appears in anchors: Hong Kong=0.9474."
+    }
+  }
+}

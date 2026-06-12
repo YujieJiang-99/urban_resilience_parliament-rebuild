@@ -1,7 +1,7 @@
 City: Hong Kong
 Region: Hong Kong SAR, China
 Summary: A compact coastal city used as a placeholder case for future evidence collection.
-Model: glm-4-flash
+Model: qwen3.5-flash
 All indicators are scored in resilience view: higher = more resilient.
 For each indicator, output a score from 0.0 to 1.0 and a useful reasoning field.
 Reasoning must be 1-2 informative sentences and must include:
@@ -20,88 +20,178 @@ Indicators:
   dimension: cap_abs
   definition: City-level building safety governance: (1) risk-informed code adoption (2) strictness of permit review (3) inspection coverage (4) regulatory enforcement and discipline (5) retrofit of existing and informal buildings (6) occupancy control (7) routine maintenance (8) post-disaster habitability assessment.
   city_anchors_resilience: Hong Kong=0.9474, Tokyo=1.0000, London=0.8947, Niamey=0.0000, Kabul=0.0526, Berlin=0.8421
+  target_city_anchor: Hong Kong=0.9474
+  reasoning_requirements:
+    - include one factual judgment about the city
+    - include exact phrase 'anchored against' with at least one anchor comparison
+    - must include exact text: target city appears in anchors: Hong Kong=0.9474
 - Urban_ecosystem_health
   id: ind__cap_abs__Ecosystem_vitality
   dimension: cap_abs
   definition: Condition and resilience services of urban and peri-urban ecosystems: (1) green and blue space coverage and access (2) air and water quality such as PM2.5 and NO2 (3) urban heat-island mitigation capacity (4) brownfield and pollution burden (5) watershed and coastal protective buffers (6) tree-canopy and permeable-surface ratios.
   city_anchors_resilience: Singapore=0.9474, London=0.8421, Niamey=0.0000, Kabul=0.1053, Stockholm=1.0000, Berlin=0.8947
+  target_city_anchor: Hong Kong not present in anchors
+  reasoning_requirements:
+    - include one factual judgment about the city
+    - include exact phrase 'anchored against' with at least one anchor comparison
+    - do not claim the target city appears in anchors
 - Urban_income_equity
   id: ind__cap_abs__GINI_Index
   dimension: cap_abs
   definition: Balanced distribution of income, wealth, and opportunity within the city: (1) intra-city Gini or inequality measures (2) spatial segregation between affluent districts and slums (3) exclusion of migrants and informal residents (4) urban-suburban and urban-rural service gaps (5) uneven pre-disaster vulnerability across groups.
   city_anchors_resilience: Hong Kong=0.6316, Niamey=0.0000, Kabul=0.0526, Stockholm=1.0000, Paris=0.9474, Berlin=0.8947
+  target_city_anchor: Hong Kong=0.6316
+  reasoning_requirements:
+    - include one factual judgment about the city
+    - include exact phrase 'anchored against' with at least one anchor comparison
+    - must include exact text: target city appears in anchors: Hong Kong=0.6316
 - Urban_safety_and_social_cohesion
   id: ind__cap_abs__Global_Peace_Index
   dimension: cap_abs
   definition: City-level safety and social cohesion: (1) homicide and violent-crime rates (2) perceived safety at night and among vulnerable groups (3) gangs and organized crime (4) ethnic or sectarian tension (5) protest-related violence (6) exposure to terrorist attacks (7) social trust and cohesion.
   city_anchors_resilience: Singapore=1.0000, London=0.7368, Niamey=0.0000, Kabul=0.0526, Stockholm=0.9474, Seoul=0.8947
+  target_city_anchor: Hong Kong not present in anchors
+  reasoning_requirements:
+    - include one factual judgment about the city
+    - include exact phrase 'anchored against' with at least one anchor comparison
+    - do not claim the target city appears in anchors
 - Housing_habitability
   id: ind__cap_abs__Housing_deprivation
   dimension: cap_abs
   definition: Service quality and habitability of housing as a protective living environment: (1) reliable household water, electricity, and sanitation (2) structural safety and hazard resistance (3) absence of severe overcrowding and adequate floor area per person (4) affordability, reasonable rent burden, and tenure security (5) location outside slums or high-risk sites. This is multidimensional, not simply housing quantity.
   city_anchors_resilience: Singapore=0.9474, London=0.7368, Niamey=0.0000, Kabul=0.0526, Stockholm=1.0000, Osaka=0.8947
+  target_city_anchor: Hong Kong not present in anchors
+  reasoning_requirements:
+    - include one factual judgment about the city
+    - include exact phrase 'anchored against' with at least one anchor comparison
+    - do not claim the target city appears in anchors
 - Infrastructure_quality
   id: ind__cap_abs__Infrastructure_quality
   dimension: cap_abs
   definition: Quality and resilience of urban infrastructure: (1) structural condition of roads, bridges, and tunnels (2) power-grid reliability and redundancy (3) completeness of water supply, drainage, and wastewater systems (4) public-transport capacity and coverage (5) resilience of interdependent critical infrastructure (6) retrofit of aging assets (7) post-disaster restoration capacity. Score by the weakest relevant subdimension, for example a city with excellent roads but frequent power outages should be rated around the middle.
   city_anchors_resilience: Singapore=1.0000, London=0.8421, Niamey=0.0000, Kabul=0.0526, Seoul=0.9474, Stockholm=0.8947
+  target_city_anchor: Hong Kong not present in anchors
+  reasoning_requirements:
+    - include one factual judgment about the city
+    - include exact phrase 'anchored against' with at least one anchor comparison
+    - do not claim the target city appears in anchors
 - Urban_mobile_connectivity
   id: ind__cap_resp__2G_3G_and_4G_network_coverage
   dimension: cap_resp
   definition: Accessibility, reliability, affordability, and inclusiveness of urban mobile voice and data networks: (1) 4G/5G population coverage (2) indoor and informal-settlement service quality (3) backup power and congestion resistance during disasters (4) reach of emergency alerts (5) affordability (6) digital divides by income, age, migrant status, and district.
   city_anchors_resilience: Tokyo=0.9474, London=0.8421, Niamey=0.0000, Kabul=0.0526, Seoul=1.0000, Stockholm=0.8947
+  target_city_anchor: Hong Kong not present in anchors
+  reasoning_requirements:
+    - include one factual judgment about the city
+    - include exact phrase 'anchored against' with at least one anchor comparison
+    - do not claim the target city appears in anchors
 - Municipal_public_integrity
   id: ind__cap_resp__Control_of_corruption
   dimension: cap_resp
   definition: Transparency and integrity of municipal governance: (1) transparency of municipal procurement (2) corruption in building and planning permits, including the corruption-earthquake mortality channel identified by Ambraseys and Bilham 2011 (3) degree of developer capture in land-use planning (4) audit independence (5) open fiscal data (6) effectiveness of complaint and grievance channels.
   city_anchors_resilience: Tokyo=0.8947, Niamey=0.0526, Kabul=0.0000, Stockholm=1.0000, Osaka=0.9474, Berlin=0.8421
+  target_city_anchor: Hong Kong not present in anchors
+  reasoning_requirements:
+    - include one factual judgment about the city
+    - include exact phrase 'anchored against' with at least one anchor comparison
+    - do not claim the target city appears in anchors
 - Local_financial_buffer_capacity
   id: ind__cap_resp__Gross_tiol_Savings
   dimension: cap_resp
   definition: Fiscal capacity of households, firms, and municipal government to absorb and respond to shocks: (1) municipal reserves and emergency funds (2) disposable household savings (3) depth of commercial banking access (4) insurance penetration, especially disaster and property coverage (5) availability of emergency credit (6) remittances in migrant-intensive cities (7) social-protection coverage. Data caveat: this indicator has weak discrimination against GIRI, with Pearson around -0.26, and can be distorted by oil-rentier countries such as Qatar.
   city_anchors_resilience: Singapore=1.0000, Tokyo=0.9474, London=0.7895, Niamey=0.0000, Kabul=0.0526, Stockholm=0.8947
+  target_city_anchor: Hong Kong not present in anchors
+  reasoning_requirements:
+    - include one factual judgment about the city
+    - include exact phrase 'anchored against' with at least one anchor comparison
+    - do not claim the target city appears in anchors
 - Logistics_performance_index
   id: ind__cap_resp__Logistics_performance_index
   dimension: cap_resp
   definition: Urban logistics and supply-chain capacity: (1) port, airport, and rail freight throughput (2) efficiency of customs and inspection processes (3) freight-forwarding and warehousing infrastructure (4) tracking, tracing, and digitalization (5) timeliness (6) emergency logistics corridors during disasters (7) density of transshipment and last-mile delivery. Consider the city's role as a logistics node, with Hong Kong, Singapore, and Rotterdam as top-tier hubs and mid-sized inland cities depending more on regional logistics networks.
   city_anchors_resilience: Singapore=1.0000, Kabul=0.0000, Shenzhen=0.9474, Seoul=0.8947, Beijing=0.8421, Paris=0.7895
+  target_city_anchor: Hong Kong not present in anchors
+  reasoning_requirements:
+    - include one factual judgment about the city
+    - include exact phrase 'anchored against' with at least one anchor comparison
+    - do not claim the target city appears in anchors
 - Local_economic_stability
   id: ind__cap_resp__Macroeconomic_stability
   dimension: cap_resp
   definition: Stability of the city economy under shocks: (1) employment volatility (2) inflation and cost-of-living pressure (3) dependence on a single industry, including Detroit-style risk (4) fiscal stress (5) instability in housing and land prices (6) exposure to trade or tourism shocks (7) continuity of basic markets after disasters.
   city_anchors_resilience: Singapore=1.0000, Niamey=0.0526, Kabul=0.0000, Stockholm=0.9474, Seoul=0.8947, Berlin=0.8421
+  target_city_anchor: Hong Kong not present in anchors
+  reasoning_requirements:
+    - include one factual judgment about the city
+    - include exact phrase 'anchored against' with at least one anchor comparison
+    - do not claim the target city appears in anchors
 - Local_governance_stability
   id: ind__cap_resp__Political_stability
   dimension: cap_resp
   definition: Continuity and stability of urban governance: (1) predictability of leadership transitions (2) risk of major unrest or violent disruption (3) institutional continuity (4) coordination across levels of government (5) government legitimacy (6) ability to maintain basic services during crises.
   city_anchors_resilience: Tokyo=0.9474, Niamey=0.0526, Kabul=0.0000, Stockholm=1.0000, Toronto=0.8947, Seoul=0.8421
+  target_city_anchor: Hong Kong not present in anchors
+  reasoning_requirements:
+    - include one factual judgment about the city
+    - include exact phrase 'anchored against' with at least one anchor comparison
+    - do not claim the target city appears in anchors
 - Access_to_quality_education
   id: ind__cap_rec__Access_to_quality_education
   dimension: cap_rec
   definition: Access to and quality of urban education resources: (1) school density and coverage (2) PISA or standardized-test performance (3) student-teacher ratios (4) share of high-quality primary, secondary, and tertiary institutions (5) enrollment of migrant and low-income children (6) early-childhood and preschool coverage (7) continuing education and vocational training. Account for intra-city gaps; for example, Beijing Haidian is not the same as Beijing's outer suburbs. Score the city average with some weight toward the worst-served districts.
   city_anchors_resilience: Singapore=0.8947, London=1.0000, Niamey=0.1053, Kabul=0.0000, Beijing=0.9474, Seoul=0.8421
+  target_city_anchor: Hong Kong not present in anchors
+  reasoning_requirements:
+    - include one factual judgment about the city
+    - include exact phrase 'anchored against' with at least one anchor comparison
+    - do not claim the target city appears in anchors
 - Economic_complexity_index
   id: ind__cap_rec__Economic_complexity_index
   dimension: cap_rec
   definition: Complexity and diversity of the urban economic structure: (1) number of industrial sectors and share of high value-added activity (2) export product complexity, including ECI-style evidence (3) industrial clusters and innovation ecosystems (4) share of knowledge-intensive services (5) capacity to withstand single-industry shocks (6) supplementary resilience from the informal economy (7) position in international value chains. Single-resource cities, such as Detroit-style industrial monocultures or oil-dependent cities, should score lower.
   city_anchors_resilience: Tokyo=1.0000, Niamey=0.0526, Kabul=0.0000, Shenzhen=0.9474, Beijing=0.8947, Paris=0.8421
+  target_city_anchor: Hong Kong not present in anchors
+  reasoning_requirements:
+    - include one factual judgment about the city
+    - include exact phrase 'anchored against' with at least one anchor comparison
+    - do not claim the target city appears in anchors
 - Government_Effectiveness_Index
   id: ind__cap_rec__Government_Effectiveness_Index
   dimension: cap_rec
   definition: Municipal and metropolitan governance capacity from an intra-city perspective: (1) planning, permitting, and service-delivery capacity (2) effectiveness of infrastructure maintenance (3) emergency management and coordination (4) data-driven decision making (5) equitable implementation of recovery (6) coordination across municipal, provincial, and national levels (7) transparency and accountability mechanisms. National scores are only a reference; city-level assessment should focus on municipal capacity.
   city_anchors_resilience: Singapore=1.0000, Tokyo=0.9474, Niamey=0.0000, Kabul=0.1053, Seoul=0.8947, Toronto=0.8421
+  target_city_anchor: Hong Kong not present in anchors
+  reasoning_requirements:
+    - include one factual judgment about the city
+    - include exact phrase 'anchored against' with at least one anchor comparison
+    - do not claim the target city appears in anchors
 - Human_Development_Index
   id: ind__cap_rec__Human_Development_Index
   dimension: cap_rec
   definition: Integrated health, education, and income development of the urban population, adjusted for intra-city distribution: (1) average life expectancy (2) years of schooling (3) disposable income per capita (4) access for migrants and informal residents (5) healthcare accessibility (6) income safety nets (7) vulnerability of disadvantaged communities. Slum-CBD disparities within the city are critical; adjust from the perspective of the worst-served groups rather than relying only on citywide averages.
   city_anchors_resilience: Hong Kong=0.9474, Niamey=0.0526, Kabul=0.0000, Stockholm=1.0000, Seoul=0.8947, Macau=0.8421
+  target_city_anchor: Hong Kong=0.9474
+  reasoning_requirements:
+    - include one factual judgment about the city
+    - include exact phrase 'anchored against' with at least one anchor comparison
+    - must include exact text: target city appears in anchors: Hong Kong=0.9474
 - Research_Development
   id: ind__cap_rec__Research_Development
   dimension: cap_rec
   definition: Urban R&D capacity and innovation ecosystem: (1) R&D share of GDP (2) concentration of research institutes and universities (3) patent output per capita (4) high-tech employment share (5) venture capital and innovation finance (6) density of industry-university-research collaboration (7) application of disaster-related technologies, such as early warning systems and seismic research. Global innovation hubs such as Boston, Tokyo, and Shenzhen should score highly.
   city_anchors_resilience: Hong Kong=0.8421, Tokyo=1.0000, London=0.9474, Niamey=0.0526, Kabul=0.0000, Los Angeles=0.8947
+  target_city_anchor: Hong Kong=0.8421
+  reasoning_requirements:
+    - include one factual judgment about the city
+    - include exact phrase 'anchored against' with at least one anchor comparison
+    - must include exact text: target city appears in anchors: Hong Kong=0.8421
 - Technology_achievement_index
   id: ind__cap_rec__Technology_achievement_index
   dimension: cap_rec
   definition: Urban technology achievement and digital infrastructure: (1) ICT penetration and affordability (2) high-tech product exports and manufacturing (3) digital government and smart-city deployment (4) 5G and fiber coverage (5) AI, blockchain, and IoT applications (6) digital-skills diffusion (7) autonomy in key technologies. Digital divides by age, income, and district affect overall resilience, so adjust for weaker groups.
   city_anchors_resilience: Hong Kong=0.9474, Niamey=0.0526, Kabul=0.0000, Shenzhen=1.0000, Beijing=0.8947, Stockholm=0.8421
+  target_city_anchor: Hong Kong=0.9474
+  reasoning_requirements:
+    - include one factual judgment about the city
+    - include exact phrase 'anchored against' with at least one anchor comparison
+    - must include exact text: target city appears in anchors: Hong Kong=0.9474

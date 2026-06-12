@@ -2,7 +2,7 @@
   "city_id": "hk-demo",
   "stage": "consul_audit",
   "policy": {
-    "outlier_threshold": 8.0,
+    "outlier_threshold": 0.08,
     "basis": "R2 score deviation from peer median by indicator"
   },
   "rounds_read": {

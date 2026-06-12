@@ -19,8 +19,8 @@ The assessment is below.
 ```json
 {{
   "indicators": {{
-    "{first}": {{"score": 67, "reasoning": "first short reason"}},
-    "{second}": {{"score": 72, "reasoning": "second short reason"}}
+    "{first}": {{"score": 0.67, "reasoning": "first short reason"}},
+    "{second}": {{"score": 0.72, "reasoning": "second short reason"}}
   }}
 }}
 ```

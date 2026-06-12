@@ -91,25 +91,19 @@ class MockLLMBackend:
         index: int,
     ) -> float:
         meta = get_indicator_meta(indicator)
-        pattern_adjustment = ((index % 5) - 2) * 1.5
+        pattern_adjustment = ((index % 5) - 2) * 0.015
         dimension_adjustment = persona.dimension_emphasis.get(meta.dimension, 0)
         anchor_adjustment = _city_anchor_adjustment(meta.city_anchors_resilience, city.city_name)
         score = persona.base_score + pattern_adjustment + dimension_adjustment + anchor_adjustment
-        return round(min(100, max(0, score)), 1)
+        return round(min(1, max(0, score)), 4)
 
     def _r1_reasoning(self, city: CityInput, persona: ModelSpec, indicator: str) -> str:
         meta = get_indicator_meta(indicator)
         label = meta.alias_name.replace("_", " ")
-        anchor = meta.city_anchors_resilience.get(city.city_name)
-        anchor_note = (
-            f" city anchor={anchor:.4f}."
-            if anchor is not None
-            else " no direct city anchor."
-        )
+        anchor_note = _anchor_reasoning_note(meta.city_anchors_resilience, city.city_name)
         return (
             f"{city.city_name} is scored by {persona.model_name}; "
-            f"the mock backend treats {label} as a {meta.dimension} indicator with"
-            f"{anchor_note}"
+            f"the mock backend treats {label} as a {meta.dimension} indicator. {anchor_note}"
         )
 
     def _revise_score(
@@ -130,8 +124,8 @@ class MockLLMBackend:
             return own_score
 
         peer_average = sum(score.score for score in peer_scores) / len(peer_scores)
-        adjustment = max(-2.0, min(2.0, (peer_average - own_score.score) * 0.25))
-        revised_value = round(max(0, min(100, own_score.score + adjustment)), 1)
+        adjustment = max(-0.02, min(0.02, (peer_average - own_score.score) * 0.25))
+        revised_value = round(max(0, min(1, own_score.score + adjustment)), 4)
         revised_confidence = (
             None
             if own_score.confidence is None
@@ -213,6 +207,7 @@ class OpenAICompatibleLLMBackend:
             indicator_ids=indicator_ids,
             original_prompt=prompt,
             log_path=log_path,
+            target_city=city.city_name,
         )
         scores = [
             IndicatorScore(
@@ -251,6 +246,7 @@ class OpenAICompatibleLLMBackend:
             indicator_ids=indicator_ids,
             original_prompt=prompt,
             log_path=log_path,
+            target_city=city.city_name,
         )
         return {
             "city_id": city.city_id,
@@ -268,11 +264,12 @@ class OpenAICompatibleLLMBackend:
         indicator_ids: list[str],
         original_prompt: str | None = None,
         log_path: Path | None = None,
+        target_city: str | None = None,
     ) -> dict[str, dict[str, float | str]]:
         """Parse model content into indicators -> {score, reasoning}."""
 
         try:
-            indicators = self._parse_indicator_object(content, indicator_ids)
+            indicators = self._parse_indicator_object(content, indicator_ids, target_city)
             self._update_log(log_path, extracted_content=content, parsed_json={"indicators": indicators})
             return indicators
         except ValueError as first_error:
@@ -290,7 +287,7 @@ class OpenAICompatibleLLMBackend:
             )
             repair_content = self._extract_message_content(repair_response)
             try:
-                repaired = self._parse_indicator_object(repair_content, indicator_ids)
+                repaired = self._parse_indicator_object(repair_content, indicator_ids, target_city)
                 self._update_log(
                     repair_log_path,
                     extracted_content=repair_content,
@@ -314,6 +311,7 @@ class OpenAICompatibleLLMBackend:
         self,
         content: str,
         indicator_ids: list[str],
+        target_city: str | None = None,
     ) -> dict[str, dict[str, float | str]]:
         try:
             data = json.loads(extract_first_json_object(content))
@@ -333,12 +331,14 @@ class OpenAICompatibleLLMBackend:
                 raise ValueError(f"Indicator {indicator} must include score and reasoning")
             score = float(cell["score"])
             reasoning = str(cell["reasoning"]).strip()
-            if not 0 <= score <= 100:
-                raise ValueError(f"Indicator {indicator} score must be between 0 and 100")
+            if not 0 <= score <= 1:
+                raise ValueError(f"Indicator {indicator} score must be between 0 and 1")
             if not reasoning:
                 raise ValueError(f"Indicator {indicator} reasoning must be non-empty")
             if _is_placeholder_reasoning(reasoning):
                 raise ValueError(f"Indicator {indicator} reasoning appears to be a placeholder")
+            if target_city is not None:
+                _validate_anchor_reasoning(indicator, reasoning, target_city)
             parsed[indicator] = {
                 "score": score,
                 "reasoning": reasoning,
@@ -458,7 +458,42 @@ def _city_anchor_adjustment(anchors: dict[str, float], city_name: str) -> float:
     anchor = anchors.get(city_name)
     if anchor is None:
         return 0.0
-    return round((anchor - 0.5) * 6, 2)
+    return round((anchor - 0.5) * 0.06, 4)
+
+
+def _anchor_reasoning_note(anchors: dict[str, float], city_name: str) -> str:
+    anchor_pairs = _representative_anchor_pairs(anchors, city_name)
+    note = f"anchored against {anchor_pairs}."
+    if city_name in anchors:
+        note += f" target city appears in anchors: {city_name}={anchors[city_name]:.4f}."
+    return note
+
+
+def _representative_anchor_pairs(anchors: dict[str, float], city_name: str) -> str:
+    preferred = [city_name, "Singapore", "Tokyo", "London", "Niamey", "Kabul"]
+    selected: list[tuple[str, float]] = [
+        (city, anchors[city]) for city in preferred if city in anchors
+    ]
+    selected_names = {city for city, _ in selected}
+    for city, value in anchors.items():
+        if len(selected) >= 3:
+            break
+        if city not in selected_names:
+            selected.append((city, value))
+            selected_names.add(city)
+    return " / ".join(f"{city}={value:.4f}" for city, value in selected[:3])
+
+
+def _validate_anchor_reasoning(indicator: str, reasoning: str, target_city: str) -> None:
+    if "anchored against" not in reasoning:
+        raise ValueError(f"Indicator {indicator} reasoning must include anchor calibration")
+    anchors = get_indicator_meta(indicator).city_anchors_resilience
+    if target_city in anchors:
+        required = f"target city appears in anchors: {target_city}="
+        if required not in reasoning:
+            raise ValueError(
+                f"Indicator {indicator} reasoning must disclose target city anchor"
+            )
 
 
 def _find_round(rounds: list[AgentRound], agent_id: str) -> AgentRound:
@@ -517,6 +552,9 @@ def _build_repair_prompt(content: str, indicator_ids: list[str]) -> str:
         "content, return {\"repair_error\":\"missing_reasoning\"} rather than "
         "inventing placeholder text. Do not use placeholder reasoning such as "
         "'short reason', 'N/A', or 'not provided'. The required JSON shape is "
+        "Scores must remain on a 0.0 to 1.0 scale. Reasoning must retain anchor "
+        "calibration text from the original output, including 'anchored against' "
+        "and any target-city anchor disclosure if present. The required JSON shape is "
         "{\"indicators\":{\"<indicator_id>\":{\"score\":<number>,"
         "\"reasoning\":\"<reasoning recovered from original output>\"}}}. "
         "Required indicator ids:\n"

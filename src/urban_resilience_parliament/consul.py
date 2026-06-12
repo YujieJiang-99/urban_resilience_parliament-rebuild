@@ -7,7 +7,7 @@ from typing import Any
 from .indicators import RESILIENCE_INDICATORS
 from .io import read_json, write_json
 
-OUTLIER_THRESHOLD = 8.0
+OUTLIER_THRESHOLD = 0.08
 
 
 def run_consul_from_payloads(

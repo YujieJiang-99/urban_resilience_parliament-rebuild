@@ -1,0 +1,90 @@
+{
+  "request": {
+    "purpose": "indicator_subset",
+    "base_url": "https://api.zhizengzeng.com/v1",
+    "endpoint": "/chat/completions",
+    "model": "qwen3.5-flash",
+    "timeout": 180,
+    "prompt_chars": 12379,
+    "has_api_key": true
+  },
+  "attempts": 1,
+  "raw_response": "{\"choices\":[{\"finish_reason\":\"stop\",\"index\":0,\"logprobs\":null,\"message\":{\"content\":\"{\\n  \\\"indicators\\\": {\\n    \\\"ind__cap_abs__Building_quality_control_index\\\": {\\n      \\\"score\\\": 95,\\n      \\\"reasoning\\\": \\\"Hong Kong enforces rigorous building codes and strict permit reviews with high inspection coverage, anchoring its score near Tokyo's benchmark of 1.0000 despite challenges in retrofitting older informal structures.\\\"\\n    },\\n    \\\"ind__cap_abs__Ecosystem_vitality\\\": {\\n      \\\"score\\\": 72,\\n      \\\"reasoning\\\": \\\"While Hong Kong maintains significant green space policies, its extreme urban density limits tree-canopy ratios and permeable surfaces compared to Stockholm, resulting in a moderate heat-island mitigation capacity.\\\"\\n    },\\n    \\\"ind__cap_abs__GINI_Index\\\": {\\n      \\\"score\\\": 63,\\n      \\\"reasoning\\\": \\\"The city exhibits high income inequality and spatial segregation between affluent districts and dense public housing estates, aligning closely with the provided anchor value of 0.6316.\\\"\\n    },\\n    \\\"ind__cap_abs__Global_Peace_Index\\\": {\\n      \\\"score\\\": 88,\\n      \\\"reasoning\\\": \\\"Hong Kong demonstrates low violent crime rates and high social trust comparable to Seoul, though occasional protest-related tensions prevent it from reaching the perfect scores seen in Singapore or Stockholm.\\\"\\n    },\\n    \\\"ind__cap_abs__Housing_deprivation\\\": {\\n      \\\"score\\\": 78,\\n      \\\"reasoning\\\": \\\"Although structural safety is high, severe overcrowding in subdivided flats and unaffordable rent burdens significantly lower habitability scores relative to Singapore or Stockholm.\\\"\\n    },\\n    \\\"ind__cap_abs__Infrastructure_quality\\\": {\\n      \\\"score\\\": 92,\\n      \\\"reasoning\\\": \\\"The city boasts world-class roads, drainage, and power-grid reliability with strong post-disaster restoration capacity, scoring just below Singapore's top-tier benchmark.\\\"\\n    },\\n    \\\"ind__cap_resp__2G_3G_and_4G_network_coverage\\\": {\\n      \\\"score\\\": 96,\\n      \\\"reasoning\\\": \\\"Hong Kong achieves near-universal 4G/5G coverage with robust backup power systems, placing it very close to Seoul's perfect score for network accessibility and disaster resilience.\\\"\\n    },\\n    \\\"ind__cap_resp__Control_of_corruption\\\": {\\n      \\\"score\\\": 85,\\n      \\\"reasoning\\\": \\\"High transparency in municipal procurement and independent auditing mechanisms place Hong Kong near Tokyo's level, though minor concerns regarding developer influence persist.\\\"\\n    },\\n    \\\"ind__cap_resp__Gross_tiol_Savings\\\": {\\n      \\\"score\\\": 82,\\n      \\\"reasoning\\\": \\\"Strong commercial banking depth and household savings provide a solid fiscal buffer, though high living costs reduce disposable savings compared to Singapore's maximum benchmark.\\\"\\n    },\\n    \\\"ind__cap_resp__Logistics_performance_index\\\": {\\n      \\\"score\\\": 98,\\n      \\\"reasoning\\\": \\\"As a global top-tier logistics hub with exceptional port throughput and customs efficiency, Hong Kong rivals Singapore and Shenzhen in supply-chain resilience.\\\"\\n    },\\n    \\\"ind__cap_resp__Macroeconomic_stability\\\": {\\n      \\\"score\\\": 86,\\n      \\\"reasoning\\\": \\\"Diversified financial and service sectors ensure stability against shocks, though exposure to trade volatility prevents a perfect score compared to Singapore or Stockholm.\\\"\\n    },\\n    \\\"ind__cap_resp__Political_stability\\\": {\\n      \\\"score\\\": 84,\\n      \\\"reasoning\\\": \\\"Institutional continuity is generally high, but recent social unrest has slightly reduced predictability scores compared to Tokyo or Toronto benchmarks.\\\"\\n    },\\n    \\\"ind__cap_rec__Access_to_quality_education\\\": {\\n      \\\"score\\\": 88,\\n      \\\"reasoning\\\": \\\"High school density and PISA performance are excellent, yet intra-city gaps between elite private schools and under-resourced public institutions lower the weighted average.\\\"\\n    },\\n    \\\"ind__cap_rec__Economic_complexity_index\\\": {\\n      \\\"score\\\": 90,\\n      \\\"reasoning\\\": \\\"A highly diversified economy with strong knowledge-intensive services and innovation clusters scores well, though it lacks the sheer industrial breadth of Tokyo.\\\"\\n    },\\n    \\\"ind__cap_rec__Government_Effectiveness_Index\\\": {\\n      \\\"score\\\": 89,\\n      \\\"reasoning\\\": \\\"Efficient planning and emergency coordination are hallmarks of Hong Kong's governance, aligning closely with Tokyo's effectiveness while facing some bureaucratic rigidity.\\\"\\n    },\\n    \\\"ind__cap_rec__Human_Development_Index\\\": {\\n      \\\"score\\\": 95,\\n      \\\"reasoning\\\": \\\"Exceptional life expectancy and education levels drive a high HDI, though the disparity between wealthy and disadvantaged communities keeps it slightly below Stockholm's ideal.\\\"\\n    },\\n    \\\"ind__cap_rec__Research_Development\\\": {\\n      \\\"score\\\": 84,\\n      \\\"reasoning\\\": \\\"Strong university-industry collaboration exists, but R\\u0026D spending as a share of GDP lags behind Tokyo and London, limiting its innovation ecosystem score.\\\"\\n    },\\n    \\\"ind__cap_rec__Technology_achievement_index\\\": {\\n      \\\"score\\\": 94,\\n      \\\"reasoning\\\": \\\"High ICT penetration and smart-city deployment match Shenzhen's leadership, though digital divides by age and district require further attention to reach perfection.\\\"\\n    }\\n  }\\n}\",\"role\":\"assistant\"}}],\"created\":1781243111,\"id\":\"chatcmpl-30a69b05-1c8f-953c-bf9b-aa929c8750d5\",\"model\":\"qwen3.5-flash\",\"object\":\"chat.completion\",\"system_fingerprint\":null,\"usage\":{\"completion_tokens\":1154,\"completion_tokens_details\":{\"text_tokens\":1154},\"prompt_tokens\":3386,\"prompt_tokens_details\":{\"text_tokens\":3386},\"total_tokens\":4540}}",
+  "extracted_content": "{\n  \"indicators\": {\n    \"ind__cap_abs__Building_quality_control_index\": {\n      \"score\": 95,\n      \"reasoning\": \"Hong Kong enforces rigorous building codes and strict permit reviews with high inspection coverage, anchoring its score near Tokyo's benchmark of 1.0000 despite challenges in retrofitting older informal structures.\"\n    },\n    \"ind__cap_abs__Ecosystem_vitality\": {\n      \"score\": 72,\n      \"reasoning\": \"While Hong Kong maintains significant green space policies, its extreme urban density limits tree-canopy ratios and permeable surfaces compared to Stockholm, resulting in a moderate heat-island mitigation capacity.\"\n    },\n    \"ind__cap_abs__GINI_Index\": {\n      \"score\": 63,\n      \"reasoning\": \"The city exhibits high income inequality and spatial segregation between affluent districts and dense public housing estates, aligning closely with the provided anchor value of 0.6316.\"\n    },\n    \"ind__cap_abs__Global_Peace_Index\": {\n      \"score\": 88,\n      \"reasoning\": \"Hong Kong demonstrates low violent crime rates and high social trust comparable to Seoul, though occasional protest-related tensions prevent it from reaching the perfect scores seen in Singapore or Stockholm.\"\n    },\n    \"ind__cap_abs__Housing_deprivation\": {\n      \"score\": 78,\n      \"reasoning\": \"Although structural safety is high, severe overcrowding in subdivided flats and unaffordable rent burdens significantly lower habitability scores relative to Singapore or Stockholm.\"\n    },\n    \"ind__cap_abs__Infrastructure_quality\": {\n      \"score\": 92,\n      \"reasoning\": \"The city boasts world-class roads, drainage, and power-grid reliability with strong post-disaster restoration capacity, scoring just below Singapore's top-tier benchmark.\"\n    },\n    \"ind__cap_resp__2G_3G_and_4G_network_coverage\": {\n      \"score\": 96,\n      \"reasoning\": \"Hong Kong achieves near-universal 4G/5G coverage with robust backup power systems, placing it very close to Seoul's perfect score for network accessibility and disaster resilience.\"\n    },\n    \"ind__cap_resp__Control_of_corruption\": {\n      \"score\": 85,\n      \"reasoning\": \"High transparency in municipal procurement and independent auditing mechanisms place Hong Kong near Tokyo's level, though minor concerns regarding developer influence persist.\"\n    },\n    \"ind__cap_resp__Gross_tiol_Savings\": {\n      \"score\": 82,\n      \"reasoning\": \"Strong commercial banking depth and household savings provide a solid fiscal buffer, though high living costs reduce disposable savings compared to Singapore's maximum benchmark.\"\n    },\n    \"ind__cap_resp__Logistics_performance_index\": {\n      \"score\": 98,\n      \"reasoning\": \"As a global top-tier logistics hub with exceptional port throughput and customs efficiency, Hong Kong rivals Singapore and Shenzhen in supply-chain resilience.\"\n    },\n    \"ind__cap_resp__Macroeconomic_stability\": {\n      \"score\": 86,\n      \"reasoning\": \"Diversified financial and service sectors ensure stability against shocks, though exposure to trade volatility prevents a perfect score compared to Singapore or Stockholm.\"\n    },\n    \"ind__cap_resp__Political_stability\": {\n      \"score\": 84,\n      \"reasoning\": \"Institutional continuity is generally high, but recent social unrest has slightly reduced predictability scores compared to Tokyo or Toronto benchmarks.\"\n    },\n    \"ind__cap_rec__Access_to_quality_education\": {\n      \"score\": 88,\n      \"reasoning\": \"High school density and PISA performance are excellent, yet intra-city gaps between elite private schools and under-resourced public institutions lower the weighted average.\"\n    },\n    \"ind__cap_rec__Economic_complexity_index\": {\n      \"score\": 90,\n      \"reasoning\": \"A highly diversified economy with strong knowledge-intensive services and innovation clusters scores well, though it lacks the sheer industrial breadth of Tokyo.\"\n    },\n    \"ind__cap_rec__Government_Effectiveness_Index\": {\n      \"score\": 89,\n      \"reasoning\": \"Efficient planning and emergency coordination are hallmarks of Hong Kong's governance, aligning closely with Tokyo's effectiveness while facing some bureaucratic rigidity.\"\n    },\n    \"ind__cap_rec__Human_Development_Index\": {\n      \"score\": 95,\n      \"reasoning\": \"Exceptional life expectancy and education levels drive a high HDI, though the disparity between wealthy and disadvantaged communities keeps it slightly below Stockholm's ideal.\"\n    },\n    \"ind__cap_rec__Research_Development\": {\n      \"score\": 84,\n      \"reasoning\": \"Strong university-industry collaboration exists, but R&D spending as a share of GDP lags behind Tokyo and London, limiting its innovation ecosystem score.\"\n    },\n    \"ind__cap_rec__Technology_achievement_index\": {\n      \"score\": 94,\n      \"reasoning\": \"High ICT penetration and smart-city deployment match Shenzhen's leadership, though digital divides by age and district require further attention to reach perfection.\"\n    }\n  }\n}",
+  "parsed_json": {
+    "indicators": {
+      "ind__cap_abs__Building_quality_control_index": {
+        "score": 95.0,
+        "reasoning": "Hong Kong enforces rigorous building codes and strict permit reviews with high inspection coverage, anchoring its score near Tokyo's benchmark of 1.0000 despite challenges in retrofitting older informal structures."
+      },
+      "ind__cap_abs__Ecosystem_vitality": {
+        "score": 72.0,
+        "reasoning": "While Hong Kong maintains significant green space policies, its extreme urban density limits tree-canopy ratios and permeable surfaces compared to Stockholm, resulting in a moderate heat-island mitigation capacity."
+      },
+      "ind__cap_abs__GINI_Index": {
+        "score": 63.0,
+        "reasoning": "The city exhibits high income inequality and spatial segregation between affluent districts and dense public housing estates, aligning closely with the provided anchor value of 0.6316."
+      },
+      "ind__cap_abs__Global_Peace_Index": {
+        "score": 88.0,
+        "reasoning": "Hong Kong demonstrates low violent crime rates and high social trust comparable to Seoul, though occasional protest-related tensions prevent it from reaching the perfect scores seen in Singapore or Stockholm."
+      },
+      "ind__cap_abs__Housing_deprivation": {
+        "score": 78.0,
+        "reasoning": "Although structural safety is high, severe overcrowding in subdivided flats and unaffordable rent burdens significantly lower habitability scores relative to Singapore or Stockholm."
+      },
+      "ind__cap_abs__Infrastructure_quality": {
+        "score": 92.0,
+        "reasoning": "The city boasts world-class roads, drainage, and power-grid reliability with strong post-disaster restoration capacity, scoring just below Singapore's top-tier benchmark."
+      },
+      "ind__cap_resp__2G_3G_and_4G_network_coverage": {
+        "score": 96.0,
+        "reasoning": "Hong Kong achieves near-universal 4G/5G coverage with robust backup power systems, placing it very close to Seoul's perfect score for network accessibility and disaster resilience."
+      },
+      "ind__cap_resp__Control_of_corruption": {
+        "score": 85.0,
+        "reasoning": "High transparency in municipal procurement and independent auditing mechanisms place Hong Kong near Tokyo's level, though minor concerns regarding developer influence persist."
+      },
+      "ind__cap_resp__Gross_tiol_Savings": {
+        "score": 82.0,
+        "reasoning": "Strong commercial banking depth and household savings provide a solid fiscal buffer, though high living costs reduce disposable savings compared to Singapore's maximum benchmark."
+      },
+      "ind__cap_resp__Logistics_performance_index": {
+        "score": 98.0,
+        "reasoning": "As a global top-tier logistics hub with exceptional port throughput and customs efficiency, Hong Kong rivals Singapore and Shenzhen in supply-chain resilience."
+      },
+      "ind__cap_resp__Macroeconomic_stability": {
+        "score": 86.0,
+        "reasoning": "Diversified financial and service sectors ensure stability against shocks, though exposure to trade volatility prevents a perfect score compared to Singapore or Stockholm."
+      },
+      "ind__cap_resp__Political_stability": {
+        "score": 84.0,
+        "reasoning": "Institutional continuity is generally high, but recent social unrest has slightly reduced predictability scores compared to Tokyo or Toronto benchmarks."
+      },
+      "ind__cap_rec__Access_to_quality_education": {
+        "score": 88.0,
+        "reasoning": "High school density and PISA performance are excellent, yet intra-city gaps between elite private schools and under-resourced public institutions lower the weighted average."
+      },
+      "ind__cap_rec__Economic_complexity_index": {
+        "score": 90.0,
+        "reasoning": "A highly diversified economy with strong knowledge-intensive services and innovation clusters scores well, though it lacks the sheer industrial breadth of Tokyo."
+      },
+      "ind__cap_rec__Government_Effectiveness_Index": {
+        "score": 89.0,
+        "reasoning": "Efficient planning and emergency coordination are hallmarks of Hong Kong's governance, aligning closely with Tokyo's effectiveness while facing some bureaucratic rigidity."
+      },
+      "ind__cap_rec__Human_Development_Index": {
+        "score": 95.0,
+        "reasoning": "Exceptional life expectancy and education levels drive a high HDI, though the disparity between wealthy and disadvantaged communities keeps it slightly below Stockholm's ideal."
+      },
+      "ind__cap_rec__Research_Development": {
+        "score": 84.0,
+        "reasoning": "Strong university-industry collaboration exists, but R&D spending as a share of GDP lags behind Tokyo and London, limiting its innovation ecosystem score."
+      },
+      "ind__cap_rec__Technology_achievement_index": {
+        "score": 94.0,
+        "reasoning": "High ICT penetration and smart-city deployment match Shenzhen's leadership, though digital divides by age and district require further attention to reach perfection."
+      }
+    }
+  }
+}

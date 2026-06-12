@@ -1,15 +1,11 @@
 City: Hong Kong
 Region: Hong Kong SAR, China
 Summary: A compact coastal city used as a placeholder case for future evidence collection.
-Model: glm-4-flash
+Model: deepseek-v4-flash
 All indicators are scored in resilience view: higher = more resilient.
-For each indicator, output a score from 0.0 to 1.0 and a useful reasoning field.
-Reasoning must be 1-2 informative sentences and must include:
-(1) one city factual judgment;
-(2) at least one city_anchors_resilience comparison using the exact phrase
-'anchored against', for example 'anchored against Singapore=1.0000 / Tokyo=0.9474';
-(3) if Hong Kong appears in the anchors, explicitly write 
-'target city appears in anchors: Hong Kong=<value>'.
+For each indicator, output a score from 0 to 100 and a useful reasoning field.
+Reasoning must be 1-2 informative sentences that reference city evidence,
+the indicator definition, or city_anchors_resilience calibration.
 Do not use placeholders such as 'short reason' or 'N/A'.
 Return only valid JSON with this shape:
 {"indicators":{"<indicator_id>":{"score":<number>,"reasoning":"<informative 1-2 sentence justification>"}}}

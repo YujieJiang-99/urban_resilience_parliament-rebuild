@@ -114,3 +114,13 @@ python run_llm_smoke.py
 This calls one model for Hong Kong and two indicators only, then writes
 `data/runs/llm_smoke/smoke_result.json`. It does not run R2, Consul, web search,
 or the full 18-indicator parliament.
+
+Run serial real R1 for selected models:
+
+```bash
+python run_round1_models.py --models glm-4-flash,deepseek-v4-flash,qwen3.5-flash
+```
+
+Outputs go to `data/runs/hong_kong_real_r1/round1/` as
+`model_<model>.json`, `all_models.json`, `errors.json`, prompts, and raw logs.
+Existing model files are skipped unless `--force` is passed.

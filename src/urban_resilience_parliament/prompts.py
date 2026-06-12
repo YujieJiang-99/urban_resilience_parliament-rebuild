@@ -19,9 +19,13 @@ def build_r1_prompt(city: CityInput, model: ModelSpec) -> str:
         f"Summary: {city.summary}",
         f"Model: {model.model_name}",
         RESILIENCE_VIEW_INSTRUCTION,
-        "For each indicator, output a score from 0 to 100 and a useful reasoning field.",
-        "Reasoning must be 1-2 informative sentences that reference city evidence,",
-        "the indicator definition, or city_anchors_resilience calibration.",
+        "For each indicator, output a score from 0.0 to 1.0 and a useful reasoning field.",
+        "Reasoning must be 1-2 informative sentences and must include:",
+        "(1) one city factual judgment;",
+        "(2) at least one city_anchors_resilience comparison using the exact phrase",
+        "'anchored against', for example 'anchored against Singapore=1.0000 / Tokyo=0.9474';",
+        f"(3) if {city.city_name} appears in the anchors, explicitly write ",
+        f"'target city appears in anchors: {city.city_name}=<value>'.",
         "Do not use placeholders such as 'short reason' or 'N/A'.",
         "Return only valid JSON with this shape:",
         '{"indicators":{"<indicator_id>":{"score":<number>,"reasoning":"<informative 1-2 sentence justification>"}}}',
@@ -30,6 +34,17 @@ def build_r1_prompt(city: CityInput, model: ModelSpec) -> str:
     ]
     for indicator in RESILIENCE_INDICATORS:
         meta = get_indicator_meta(indicator)
+        target_anchor = meta.city_anchors_resilience.get(city.city_name)
+        target_anchor_line = (
+            f"target_city_anchor: {city.city_name}={target_anchor:.4f}"
+            if target_anchor is not None
+            else f"target_city_anchor: {city.city_name} not present in anchors"
+        )
+        target_clause = (
+            f"must include exact text: target city appears in anchors: {city.city_name}={target_anchor:.4f}"
+            if target_anchor is not None
+            else "do not claim the target city appears in anchors"
+        )
         lines.extend(
             [
                 f"- {meta.alias_name}",
@@ -37,6 +52,11 @@ def build_r1_prompt(city: CityInput, model: ModelSpec) -> str:
                 f"  dimension: {meta.dimension}",
                 f"  definition: {meta.city_level_definition}",
                 f"  city_anchors_resilience: {_format_anchors(meta.city_anchors_resilience)}",
+                f"  {target_anchor_line}",
+                "  reasoning_requirements:",
+                "    - include one factual judgment about the city",
+                "    - include exact phrase 'anchored against' with at least one anchor comparison",
+                f"    - {target_clause}",
             ]
         )
     return "\n".join(lines).rstrip() + "\n"
@@ -71,15 +91,22 @@ def build_r1_smoke_prompt(
         f"Summary: {city.summary}",
         f"Model: {model.model_name}",
         RESILIENCE_VIEW_INSTRUCTION,
+        "Scores must be from 0.0 to 1.0.",
         "Return only valid JSON. Do not wrap it in markdown.",
         "Use this schema, replacing the reasoning text with actual evidence-based reasoning:",
         '{"indicators":{"<indicator_id>":{"score":<number>,"reasoning":"<informative justification>"}}}',
-        "Reasoning must not be a placeholder.",
+        "Reasoning must not be a placeholder and must include anchor calibration with the phrase 'anchored against'.",
         "",
         "Score only these indicators:",
     ]
     for indicator in indicator_ids:
         meta = get_indicator_meta(indicator)
+        target_anchor = meta.city_anchors_resilience.get(city.city_name)
+        target_anchor_line = (
+            f"target_city_anchor: {city.city_name}={target_anchor:.4f}"
+            if target_anchor is not None
+            else f"target_city_anchor: {city.city_name} not present in anchors"
+        )
         lines.extend(
             [
                 f"- {meta.alias_name}",
@@ -87,6 +114,7 @@ def build_r1_smoke_prompt(
                 f"  dimension: {meta.dimension}",
                 f"  definition: {meta.city_level_definition}",
                 f"  city_anchors_resilience: {_format_anchors(meta.city_anchors_resilience)}",
+                f"  {target_anchor_line}",
             ]
         )
     return "\n".join(lines).rstrip() + "\n"

@@ -1,0 +1,81 @@
+{
+  "city_id": "hk-demo",
+  "city_name": "Hong Kong",
+  "round": 2,
+  "stage": "peer_aware_deliberation",
+  "model": "qwen3.5-flash",
+  "indicators": {
+    "ind__cap_abs__Building_quality_control_index": {
+      "score": 0.6768,
+      "reasoning": "Hong Kong R2 mock revision for Building safety governance: adjusted upward after comparing anonymous peer scores and rationales."
+    },
+    "ind__cap_abs__Ecosystem_vitality": {
+      "score": 0.665,
+      "reasoning": "Hong Kong R2 mock revision for Urban ecosystem health: adjusted unchanged after comparing anonymous peer scores and rationales."
+    },
+    "ind__cap_abs__GINI_Index": {
+      "score": 0.6879,
+      "reasoning": "Hong Kong R2 mock revision for Urban income equity: adjusted unchanged after comparing anonymous peer scores and rationales."
+    },
+    "ind__cap_abs__Global_Peace_Index": {
+      "score": 0.695,
+      "reasoning": "Hong Kong R2 mock revision for Urban safety and social cohesion: adjusted upward after comparing anonymous peer scores and rationales."
+    },
+    "ind__cap_abs__Housing_deprivation": {
+      "score": 0.71,
+      "reasoning": "Hong Kong R2 mock revision for Housing habitability: adjusted unchanged after comparing anonymous peer scores and rationales."
+    },
+    "ind__cap_abs__Infrastructure_quality": {
+      "score": 0.65,
+      "reasoning": "Hong Kong R2 mock revision for Infrastructure quality: adjusted unchanged after comparing anonymous peer scores and rationales."
+    },
+    "ind__cap_resp__2G_3G_and_4G_network_coverage": {
+      "score": 0.6688,
+      "reasoning": "Hong Kong R2 mock revision for Urban mobile connectivity: adjusted downward after comparing anonymous peer scores and rationales."
+    },
+    "ind__cap_resp__Control_of_corruption": {
+      "score": 0.6837,
+      "reasoning": "Hong Kong R2 mock revision for Municipal public integrity: adjusted downward after comparing anonymous peer scores and rationales."
+    },
+    "ind__cap_resp__Gross_tiol_Savings": {
+      "score": 0.6987,
+      "reasoning": "Hong Kong R2 mock revision for Local financial buffer capacity: adjusted downward after comparing anonymous peer scores and rationales."
+    },
+    "ind__cap_resp__Logistics_performance_index": {
+      "score": 0.7137,
+      "reasoning": "Hong Kong R2 mock revision for Logistics performance index: adjusted downward after comparing anonymous peer scores and rationales."
+    },
+    "ind__cap_resp__Macroeconomic_stability": {
+      "score": 0.6538,
+      "reasoning": "Hong Kong R2 mock revision for Local economic stability: adjusted downward after comparing anonymous peer scores and rationales."
+    },
+    "ind__cap_resp__Political_stability": {
+      "score": 0.6688,
+      "reasoning": "Hong Kong R2 mock revision for Local governance stability: adjusted downward after comparing anonymous peer scores and rationales."
+    },
+    "ind__cap_rec__Access_to_quality_education": {
+      "score": 0.6713,
+      "reasoning": "Hong Kong R2 mock revision for Access to quality education: adjusted upward after comparing anonymous peer scores and rationales."
+    },
+    "ind__cap_rec__Economic_complexity_index": {
+      "score": 0.6863,
+      "reasoning": "Hong Kong R2 mock revision for Economic complexity index: adjusted upward after comparing anonymous peer scores and rationales."
+    },
+    "ind__cap_rec__Government_Effectiveness_Index": {
+      "score": 0.7012,
+      "reasoning": "Hong Kong R2 mock revision for Government Effectiveness Index: adjusted upward after comparing anonymous peer scores and rationales."
+    },
+    "ind__cap_rec__Human_Development_Index": {
+      "score": 0.668,
+      "reasoning": "Hong Kong R2 mock revision for Human Development Index: adjusted upward after comparing anonymous peer scores and rationales."
+    },
+    "ind__cap_rec__Research_Development": {
+      "score": 0.6767,
+      "reasoning": "Hong Kong R2 mock revision for Research Development: adjusted upward after comparing anonymous peer scores and rationales."
+    },
+    "ind__cap_rec__Technology_achievement_index": {
+      "score": 0.698,
+      "reasoning": "Hong Kong R2 mock revision for Technology achievement index: adjusted upward after comparing anonymous peer scores and rationales."
+    }
+  }
+}

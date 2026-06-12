@@ -54,7 +54,7 @@ def assert_indicator_cells(indicators: dict) -> None:
     for cell in indicators.values():
         assert set(cell) == {"score", "reasoning"}
         assert isinstance(cell["score"], float | int)
-        assert 0 <= cell["score"] <= 100
+        assert 0 <= cell["score"] <= 1
         assert cell["reasoning"]
 
 
@@ -112,7 +112,7 @@ def test_round1_mock_agent_scores_are_in_legal_ranges() -> None:
 
     for agent_round in rounds:
         for score in agent_round.scores:
-            assert 0 <= score.score <= 100
+            assert 0 <= score.score <= 1
             assert score.confidence is not None
             assert 0 <= score.confidence <= 1
             assert score.rationale
@@ -297,8 +297,8 @@ def test_openai_compatible_backend_parses_indicator_json(tmp_path) -> None:
     content = json.dumps(
         {
             "indicators": {
-                indicator_ids[0]: {"score": 67, "reasoning": "first reason"},
-                indicator_ids[1]: {"score": 72.5, "reasoning": "second reason"},
+                indicator_ids[0]: {"score": 0.67, "reasoning": "first reason"},
+                indicator_ids[1]: {"score": 0.725, "reasoning": "second reason"},
             }
         }
     )
@@ -310,7 +310,7 @@ def test_openai_compatible_backend_parses_indicator_json(tmp_path) -> None:
     )
 
     assert set(parsed) == set(indicator_ids)
-    assert parsed[indicator_ids[0]]["score"] == 67
+    assert parsed[indicator_ids[0]]["score"] == 0.67
     assert parsed[indicator_ids[0]]["reasoning"] == "first reason"
 
 
@@ -322,8 +322,8 @@ Here is the result:
 ```json
 {{
   "indicators": {{
-    "{indicator_ids[0]}": {{"score": 67, "reasoning": "first reason"}},
-    "{indicator_ids[1]}": {{"score": 72, "reasoning": "second reason"}}
+    "{indicator_ids[0]}": {{"score": 0.67, "reasoning": "first reason"}},
+    "{indicator_ids[1]}": {{"score": 0.72, "reasoning": "second reason"}}
   }}
 }}
 ```
@@ -331,7 +331,7 @@ Here is the result:
 Thanks.
 """
     extracted = extract_first_json_object(wrapped)
-    assert json.loads(extracted)["indicators"][indicator_ids[0]]["score"] == 67
+    assert json.loads(extracted)["indicators"][indicator_ids[0]]["score"] == 0.67
 
     backend = OpenAICompatibleLLMBackend(
         config=LLMConfig(
@@ -385,11 +385,48 @@ def test_openai_compatible_backend_validates_indicator_cells(tmp_path) -> None:
         )
     )
     indicator = RESILIENCE_INDICATORS[0]
-    bad_content = json.dumps({"indicators": {indicator: {"score": 101, "reasoning": ""}}})
+    bad_content = json.dumps({"indicators": {indicator: {"score": 1.01, "reasoning": ""}}})
 
-    with pytest.raises(ValueError, match="score must be between 0 and 100"):
+    with pytest.raises(ValueError, match="score must be between 0 and 1"):
         backend.parse_indicator_content(
             content=bad_content,
             raw_response="RAW",
             indicator_ids=[indicator],
         )
+
+
+def test_openai_backend_requires_anchor_calibration_for_real_city(tmp_path) -> None:
+    backend = OpenAICompatibleLLMBackend(
+        config=LLMConfig(
+            base_url="https://example.test/v1",
+            api_key="sk-test",
+            model="test-model",
+            timeout=1,
+            debug=False,
+            log_dir=tmp_path,
+        )
+    )
+    indicator = "ind__cap_abs__Building_quality_control_index"
+    content = json.dumps(
+        {
+            "indicators": {
+                indicator: {
+                    "score": 0.85,
+                    "reasoning": (
+                        "Hong Kong has strong building governance, anchored against "
+                        "Tokyo=1.0000 / London=0.8947. target city appears in anchors: "
+                        "Hong Kong=0.9474."
+                    ),
+                }
+            }
+        }
+    )
+
+    parsed = backend.parse_indicator_content(
+        content=content,
+        raw_response="RAW",
+        indicator_ids=[indicator],
+        target_city="Hong Kong",
+    )
+
+    assert parsed[indicator]["score"] == 0.85

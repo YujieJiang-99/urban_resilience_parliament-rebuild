@@ -1,0 +1,81 @@
+{
+  "city_id": "hk-demo",
+  "city_name": "Hong Kong",
+  "round": 1,
+  "stage": "independent_scoring",
+  "model": "deepseek-v4-flash",
+  "indicators": {
+    "ind__cap_abs__Building_quality_control_index": {
+      "score": 95.0,
+      "reasoning": "Hong Kong enforces rigorous building codes and inspection, reflected in its high anchor resilience score of 0.9474."
+    },
+    "ind__cap_abs__Ecosystem_vitality": {
+      "score": 80.0,
+      "reasoning": "Hong Kong has ample green spaces but faces air quality challenges from regional pollution, resulting in a moderately high ecosystem vitality score."
+    },
+    "ind__cap_abs__GINI_Index": {
+      "score": 63.0,
+      "reasoning": "Hong Kong exhibits high income inequality despite overall wealth, consistent with its anchor of 0.6316."
+    },
+    "ind__cap_abs__Global_Peace_Index": {
+      "score": 85.0,
+      "reasoning": "Hong Kong has low violent crime but experienced social unrest, balancing safety and cohesion at a high level."
+    },
+    "ind__cap_abs__Housing_deprivation": {
+      "score": 75.0,
+      "reasoning": "Hong Kong's housing is well-serviced and safe but suffers from severe overcrowding and affordability issues."
+    },
+    "ind__cap_abs__Infrastructure_quality": {
+      "score": 95.0,
+      "reasoning": "Hong Kong's transport, power, and water infrastructure are world-class with high reliability."
+    },
+    "ind__cap_resp__2G_3G_and_4G_network_coverage": {
+      "score": 95.0,
+      "reasoning": "Hong Kong boasts near-universal 4G/5G coverage and resilient network infrastructure."
+    },
+    "ind__cap_resp__Control_of_corruption": {
+      "score": 95.0,
+      "reasoning": "Hong Kong's Independent Commission Against Corruption ensures very low corruption and high transparency."
+    },
+    "ind__cap_resp__Gross_tiol_Savings": {
+      "score": 95.0,
+      "reasoning": "As a global financial hub, Hong Kong has deep savings, insurance penetration, and strong municipal reserves."
+    },
+    "ind__cap_resp__Logistics_performance_index": {
+      "score": 95.0,
+      "reasoning": "Hong Kong is a top-tier logistics node with efficient port, airport, and supply-chain services."
+    },
+    "ind__cap_resp__Macroeconomic_stability": {
+      "score": 85.0,
+      "reasoning": "Hong Kong's economy is stable with low unemployment but exposed to global trade and property cycles."
+    },
+    "ind__cap_resp__Political_stability": {
+      "score": 90.0,
+      "reasoning": "Governance is generally stable despite recent political changes, maintaining institutional continuity."
+    },
+    "ind__cap_rec__Access_to_quality_education": {
+      "score": 90.0,
+      "reasoning": "Hong Kong has high-performing schools and universities with strong PISA results and broad access."
+    },
+    "ind__cap_rec__Economic_complexity_index": {
+      "score": 80.0,
+      "reasoning": "Hong Kong's economy is dominated by finance and services, lacking industrial diversity but with high value-added."
+    },
+    "ind__cap_rec__Government_Effectiveness_Index": {
+      "score": 95.0,
+      "reasoning": "Hong Kong's municipal government is known for efficient service delivery and emergency management."
+    },
+    "ind__cap_rec__Human_Development_Index": {
+      "score": 95.0,
+      "reasoning": "Hong Kong has very high life expectancy, education, and income, with an anchor of 0.9474."
+    },
+    "ind__cap_rec__Research_Development": {
+      "score": 84.0,
+      "reasoning": "Hong Kong invests significantly in R&D with strong universities, but not at the level of Tokyo; anchor 0.8421."
+    },
+    "ind__cap_rec__Technology_achievement_index": {
+      "score": 95.0,
+      "reasoning": "High ICT penetration and smart-city deployment give Hong Kong a top technology achievement score; anchor 0.9474."
+    }
+  }
+}

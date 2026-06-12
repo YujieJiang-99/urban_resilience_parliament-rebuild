@@ -29,8 +29,8 @@ class IndicatorScore:
     def __post_init__(self) -> None:
         if self.indicator not in RESILIENCE_INDICATORS:
             raise ValueError(f"Unknown indicator: {self.indicator}")
-        if not 0 <= self.score <= 100:
-            raise ValueError("score must be between 0 and 100")
+        if not 0 <= self.score <= 1:
+            raise ValueError("score must be between 0 and 1")
         if self.confidence is not None and not 0 <= self.confidence <= 1:
             raise ValueError("confidence must be between 0 and 1")
 

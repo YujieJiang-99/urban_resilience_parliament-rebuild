@@ -21,34 +21,34 @@ def default_models() -> list[ModelSpec]:
         ModelSpec(
             model_name="glm-4-flash",
             backend_model="glm-4-flash",
-            base_score=68,
+            base_score=0.68,
             confidence=0.62,
             dimension_emphasis={
-                "cap_abs": 3,
-                "cap_resp": 1,
+                "cap_abs": 0.03,
+                "cap_resp": 0.01,
                 "cap_rec": 0,
             },
         ),
         ModelSpec(
             model_name="deepseek-v4-flash",
             backend_model="deepseek-v4-flash",
-            base_score=64,
+            base_score=0.64,
             confidence=0.58,
             dimension_emphasis={
-                "cap_abs": 1,
+                "cap_abs": 0.01,
                 "cap_resp": 0,
-                "cap_rec": 3,
+                "cap_rec": 0.03,
             },
         ),
         ModelSpec(
             model_name="qwen3.5-flash",
             backend_model="qwen3.5-flash",
-            base_score=66,
+            base_score=0.66,
             confidence=0.6,
             dimension_emphasis={
-                "cap_abs": 2,
-                "cap_resp": 3,
-                "cap_rec": 1,
+                "cap_abs": 0.02,
+                "cap_resp": 0.03,
+                "cap_rec": 0.01,
             },
         ),
     ]
@@ -60,7 +60,7 @@ def model_spec_from_name(model_name: str) -> ModelSpec:
     return ModelSpec(
         model_name=model_name,
         backend_model=model_name,
-        base_score=66,
+    base_score=0.66,
         confidence=0.6,
         dimension_emphasis={
             "cap_abs": 0,
