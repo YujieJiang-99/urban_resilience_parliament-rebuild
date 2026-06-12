@@ -113,9 +113,8 @@ Then run:
 python run_llm_smoke.py
 ```
 
-This calls one model for Hong Kong and two indicators only, then writes
-`data/runs/llm_smoke/smoke_result.json`. It does not run R2, Consul, web search,
-or the full 18-indicator parliament.
+This calls one model for Hong Kong and 18 indicators, then writes
+`data/runs/llm_smoke/smoke_result.json`. It does not run R2, Consul, web search.
 
 Run serial real R1 for selected models:
 
