@@ -21,6 +21,7 @@ PROJECT_ROOT = Path(__file__).resolve().parent
 sys.path.insert(0, str(PROJECT_ROOT / "src"))
 
 from urban_resilience_parliament import OpenAICompatibleLLMBackend  # noqa: E402
+from urban_resilience_parliament.calibration import calibration_warnings_for_indicators  # noqa: E402
 from urban_resilience_parliament.config import load_llm_config  # noqa: E402
 from urban_resilience_parliament.io import (  # noqa: E402
     agent_round_from_dict,
@@ -28,7 +29,6 @@ from urban_resilience_parliament.io import (  # noqa: E402
     load_city_input,
     model_filename,
     read_json,
-    rounds_to_compact_payload,
     write_json,
 )
 from urban_resilience_parliament.personas import default_models, model_spec_from_name  # noqa: E402
@@ -104,9 +104,18 @@ def main() -> None:
             backend = OpenAICompatibleLLMBackend(config=config)
             agent_round = backend.generate_round1(city=city, persona=model, prompt=prompt)
             validate_agent_round(agent_round)
+            compact = agent_round_to_compact_dict(
+                agent_round,
+                city,
+                "independent_scoring",
+            )
+            compact["validation_warnings"] = calibration_warnings_for_indicators(
+                compact["indicators"],
+                city.city_name,
+            )
             write_json(
                 model_path,
-                agent_round_to_compact_dict(agent_round, city, "independent_scoring"),
+                compact,
             )
             print(f"Saved: {model_path}")
         except Exception as exc:  # noqa: BLE001 - runner must continue after one model fails
@@ -131,14 +140,16 @@ def main() -> None:
 
 
 def _build_all_models_from_files(city, round1_dir: Path, model_names: list[str]) -> tuple[dict, list[dict]]:
-    rounds = []
+    models = {}
     errors = []
     for model_name in model_names:
         model_path = round1_dir / model_filename(model_name)
         if not model_path.exists():
             continue
         try:
-            rounds.append(agent_round_from_dict(read_json(model_path)))
+            data = read_json(model_path)
+            agent_round_from_dict(data)
+            models[model_name] = data
         except Exception as exc:  # noqa: BLE001 - keep runner resumable
             errors.append(
                 {
@@ -149,12 +160,13 @@ def _build_all_models_from_files(city, round1_dir: Path, model_names: list[str])
                 }
             )
     return (
-        rounds_to_compact_payload(
-            city=city,
-            rounds=rounds,
-            round_number=1,
-            stage="independent_scoring",
-        ),
+        {
+            "city_id": city.city_id,
+            "city_name": city.city_name,
+            "round": 1,
+            "stage": "independent_scoring",
+            "models": models,
+        },
         errors,
     )
 

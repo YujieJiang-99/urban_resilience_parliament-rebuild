@@ -7,75 +7,76 @@
   "indicators": {
     "ind__cap_abs__Building_quality_control_index": {
       "score": 0.9474,
-      "reasoning": "Hong Kong enforces rigorous building codes and strict permit reviews following historical typhoon damage, anchored against Tokyo=1.0000 / London=0.8947. target city appears in anchors: Hong Kong=0.9474"
+      "reasoning": "Hong Kong enforces rigorous building codes and strict permit reviews anchored against Tokyo=1.0000 / London=0.8947. Calibration: lower_anchor=London=0.8947, upper_anchor=Tokyo=1.0000; target city appears in anchors: Hong Kong=0.9474"
     },
     "ind__cap_abs__Ecosystem_vitality": {
-      "score": 0.6316,
-      "reasoning": "Despite high green space per capita, the city faces significant urban heat island effects due to extreme density, anchored against Singapore=0.9474 / Stockholm=1.0000."
+      "score": 0.5,
+      "reasoning": "Despite high green space density per capita, severe urban heat island effects persist anchored against Stockholm=1.0000 / Bangkok=0.4737. Calibration: lower_anchor=Bangkok=0.4737, upper_anchor=Istanbul=0.5263"
     },
     "ind__cap_abs__GINI_Index": {
       "score": 0.6316,
-      "reasoning": "The city exhibits high income inequality with stark spatial segregation between affluent districts and older housing estates, anchored against Stockholm=1.0000 / Paris=0.9474. target city appears in anchors: Hong Kong=0.6316"
+      "reasoning": "High income inequality is evident with significant spatial segregation between affluent districts and older housing estates anchored against Stockholm=1.0000 / Beijing=0.5789. Calibration: lower_anchor=Beijing=0.5789, upper_anchor=Madrid=0.6842; target city appears in anchors: Hong Kong=0.6316"
     },
     "ind__cap_abs__Global_Peace_Index": {
-      "score": 0.7368,
-      "reasoning": "While violent crime rates remain low, social cohesion has faced challenges during periods of civil unrest, anchored against Singapore=1.0000 / Stockholm=0.9474."
+      "score": 0.5,
+      "reasoning": "Social cohesion faces challenges from periodic civil unrest despite low violent crime rates anchored against Singapore=1.0000 / Los Angeles=0.4737. Calibration: lower_anchor=Los Angeles=0.4737, upper_anchor=Istanbul=0.5263"
     },
     "ind__cap_abs__Housing_deprivation": {
-      "score": 0.7368,
-      "reasoning": "Severe overcrowding in subdivided flats and unaffordable rents persist despite high structural safety standards, anchored against Singapore=0.9474 / Stockholm=1.0000."
+      "score": 0.5,
+      "reasoning": "Severe overcrowding in subdivided flats and high rent burdens offset excellent structural safety anchored against Singapore=0.9474 / Buenos Aires=0.4737. Calibration: lower_anchor=Buenos Aires=0.4737, upper_anchor=Istanbul=0.5263"
     },
     "ind__cap_abs__Infrastructure_quality": {
-      "score": 0.8421,
-      "reasoning": "The city maintains world-class transport and utility networks with high redundancy, anchored against Singapore=1.0000 / Seoul=0.9474."
+      "score": 0.5,
+      "reasoning": "World-class transport networks are balanced by aging drainage systems vulnerable to typhoons anchored against Singapore=1.0000 / Ho Chi Minh City=0.4737. Calibration: lower_anchor=Ho Chi Minh City=0.4737, upper_anchor=Mexico City=0.5263"
     },
     "ind__cap_resp__2G_3G_and_4G_network_coverage": {
-      "score": 0.8421,
-      "reasoning": "Mobile network coverage is nearly universal with robust 5G deployment, though indoor signal quality varies in dense basement areas, anchored against Tokyo=0.9474 / Seoul=1.0000."
+      "score": 0.5,
+      "reasoning": "Near-universal 5G coverage exists but indoor signal reliability varies in dense informal settlements anchored against Seoul=1.0000 / Cairo=0.4737. Calibration: lower_anchor=Cairo=0.4737, upper_anchor=Ho Chi Minh City=0.5263"
     },
     "ind__cap_resp__Control_of_corruption": {
-      "score": 0.8421,
-      "reasoning": "Municipal governance demonstrates high transparency in procurement compared to regional peers, anchored against Tokyo=0.8947 / Stockholm=1.0000."
+      "score": 0.5,
+      "reasoning": "Strong institutional transparency is contrasted by concerns over developer influence in land-use planning anchored against Stockholm=1.0000 / Bangkok=0.4737. Calibration: lower_anchor=Bangkok=0.4737, upper_anchor=Buenos Aires=0.5263"
     },
     "ind__cap_resp__Gross_tiol_Savings": {
-      "score": 0.7895,
-      "reasoning": "High household savings rates provide a strong buffer against economic shocks, anchored against Singapore=1.0000 / Tokyo=0.9474."
+      "score": 0.5,
+      "reasoning": "High household savings rates are undermined by extreme housing costs that erode disposable buffers anchored against Singapore=1.0000 / Lima=0.4737. Calibration: lower_anchor=Lima=0.4737, upper_anchor=Buenos Aires=0.5263"
     },
     "ind__cap_resp__Logistics_performance_index": {
-      "score": 0.9474,
-      "reasoning": "As a top-tier global logistics hub, the city excels in port efficiency and freight throughput, anchored against Singapore=1.0000 / Shenzhen=0.9474."
+      "score": 0.5,
+      "reasoning": "As a top-tier global logistics hub, efficiency is high but constrained by regional geopolitical tensions anchored against Singapore=1.0000 / Delhi=0.4737. Calibration: lower_anchor=Delhi=0.4737, upper_anchor=Mexico City=0.5263"
     },
     "ind__cap_resp__Macroeconomic_stability": {
-      "score": 0.8947,
-      "reasoning": "The diversified financial and service economy shows resilience to external trade shocks, anchored against Singapore=1.0000 / Stockholm=0.9474."
+      "score": 0.5,
+      "reasoning": "Economic volatility linked to real estate cycles and trade dependence creates instability anchored against Singapore=1.0000 / Buenos Aires=0.4737. Calibration: lower_anchor=Buenos Aires=0.4737, upper_anchor=Sao Paulo=0.5263"
     },
     "ind__cap_resp__Political_stability": {
-      "score": 0.8421,
-      "reasoning": "Institutional continuity remains strong despite occasional social friction, anchored against Tokyo=0.9474 / Stockholm=1.0000."
+      "score": 0.5,
+      "reasoning": "Institutional continuity is tested by social polarization and protest-related disruptions anchored against Tokyo=0.9474 / Mexico City=0.4737. Calibration: lower_anchor=Mexico City=0.4737, upper_anchor=Buenos Aires=0.5263"
     },
     "ind__cap_rec__Access_to_quality_education": {
-      "score": 0.8421,
-      "reasoning": "Education quality is generally high with strong PISA performance, though gaps exist for migrant children, anchored against Singapore=0.8947 / London=1.0000."
+      "score": 0.5,
+      "reasoning": "High PISA scores mask significant gaps in resources for migrant children and low-income districts anchored against London=1.0000 / Mexico City=0.4737. Calibration: lower_anchor=Mexico City=0.4737, upper_anchor=Bangkok=0.5263"
     },
     "ind__cap_rec__Economic_complexity_index": {
-      "score": 0.8947,
-      "reasoning": "The economy features high complexity through advanced services and finance rather than manufacturing monocultures, anchored against Tokyo=1.0000 / Shenzhen=0.9474."
+      "score": 0.5,
+      "reasoning": "Diverse financial and service sectors provide resilience against monoculture shocks anchored against Tokyo=1.0000 / Delhi=0.4737. Calibration: lower_anchor=Delhi=0.4737, upper_anchor=Mumbai=0.5263"
     },
     "ind__cap_rec__Government_Effectiveness_Index": {
-      "score": 0.8947,
-      "reasoning": "Administrative capacity for emergency management and service delivery is highly effective, anchored against Singapore=1.0000 / Tokyo=0.9474."
+      "score": 0.5,
+      "reasoning": "Efficient service delivery is challenged by bureaucratic rigidity during complex emergency coordination anchored against Singapore=1.0000 / Tehran=0.4737. Calibration: lower_anchor=Tehran=0.4737, upper_anchor=Mexico City=0.5263"
     },
     "ind__cap_rec__Human_Development_Index": {
       "score": 0.9474,
-      "reasoning": "Life expectancy and education levels are among the highest globally, anchored against Stockholm=1.0000 / Seoul=0.8947. target city appears in anchors: Hong Kong=0.9474"
+      "reasoning": "Exceptional life expectancy and education levels are achieved despite intra-city disparities anchored against Stockholm=1.0000 / Seoul=0.8947. Calibration: lower_anchor=Seoul=0.8947, upper_anchor=Stockholm=1.0000; target city appears in anchors: Hong Kong=0.9474"
     },
     "ind__cap_rec__Research_Development": {
       "score": 0.8421,
-      "reasoning": "Strong university-industry collaboration drives innovation, though R&D spend as a percentage of GDP lags behind pure tech hubs, anchored against Tokyo=1.0000 / London=0.9474. target city appears in anchors: Hong Kong=0.8421"
+      "reasoning": "Strong university-industry collaboration drives innovation but lags behind leading tech hubs in R&D intensity anchored against Tokyo=1.0000 / Toronto=0.7895. Calibration: lower_anchor=Toronto=0.7895, upper_anchor=Los Angeles=0.8947; target city appears in anchors: Hong Kong=0.8421"
     },
     "ind__cap_rec__Technology_achievement_index": {
       "score": 0.9474,
-      "reasoning": "High ICT penetration and smart-city adoption characterize the urban digital landscape, anchored against Shenzhen=1.0000 / Beijing=0.8947. target city appears in anchors: Hong Kong=0.9474"
+      "reasoning": "Advanced digital infrastructure and smart city deployment place the city near the global frontier anchored against Shenzhen=1.0000 / Beijing=0.8947. Calibration: lower_anchor=Beijing=0.8947, upper_anchor=Shenzhen=1.0000; target city appears in anchors: Hong Kong=0.9474"
     }
-  }
+  },
+  "validation_warnings": []
 }

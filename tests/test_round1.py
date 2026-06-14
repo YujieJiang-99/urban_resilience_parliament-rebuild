@@ -19,6 +19,7 @@ from urban_resilience_parliament import (
     storage_to_resilience,
 )
 from urban_resilience_parliament.backend import extract_first_json_object
+from urban_resilience_parliament.calibration import calibration_warnings_for_indicators
 from urban_resilience_parliament.io import agent_round_from_dict
 from urban_resilience_parliament.round1 import run_round1_from_files
 from urban_resilience_parliament.round2_packet import build_model_facing_packet
@@ -90,6 +91,8 @@ def test_prompts_declare_resilience_view() -> None:
     assert "higher = more resilient" in smoke_prompt
     assert "higher = more resilient" in r2_prompt
     assert "city_anchors_resilience" in r1_prompt
+    assert "Calibration: lower_anchor=<city>=<value>, upper_anchor=<city>=<value>" in r1_prompt
+    assert "calibration_bracket_hint:" in r1_prompt
     assert "Return only valid JSON" in smoke_prompt
     assert "Agent persona" not in r1_prompt
 
@@ -414,7 +417,9 @@ def test_openai_backend_requires_anchor_calibration_for_real_city(tmp_path) -> N
                     "score": 0.85,
                     "reasoning": (
                         "Hong Kong has strong building governance, anchored against "
-                        "Tokyo=1.0000 / London=0.8947. target city appears in anchors: "
+                        "Tokyo=1.0000 / London=0.8947. Calibration: "
+                        "lower_anchor=London=0.8947, upper_anchor=Tokyo=1.0000. "
+                        "target city appears in anchors: "
                         "Hong Kong=0.9474."
                     ),
                 }
@@ -430,3 +435,24 @@ def test_openai_backend_requires_anchor_calibration_for_real_city(tmp_path) -> N
     )
 
     assert parsed[indicator]["score"] == 0.85
+
+
+def test_calibration_warnings_flag_target_anchor_mismatch() -> None:
+    indicator = "ind__cap_abs__Building_quality_control_index"
+    indicators = {
+        indicator: {
+            "score": 0.75,
+            "reasoning": (
+                "Hong Kong has strong building governance, anchored against "
+                "Tokyo=1.0000 / London=0.8947. Calibration: "
+                "lower_anchor=London=0.8947, upper_anchor=Tokyo=1.0000. "
+                "target city appears in anchors: Hong Kong=0.9474."
+            ),
+        }
+    }
+
+    warnings = calibration_warnings_for_indicators(indicators, "Hong Kong")
+
+    assert warnings
+    assert warnings[0]["indicator"] == indicator
+    assert warnings[0]["warning"] == "target_anchor_score_mismatch"

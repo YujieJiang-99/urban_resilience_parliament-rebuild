@@ -1,5 +1,6 @@
 """Prompt builders for the parliament workflow."""
 
+from .calibration import calibration_bracket_hint
 from .indicators import RESILIENCE_INDICATORS, get_indicator_meta
 from .personas import ModelSpec
 from .schemas import CityInput
@@ -24,8 +25,14 @@ def build_r1_prompt(city: CityInput, model: ModelSpec) -> str:
         "(1) one city factual judgment;",
         "(2) at least one city_anchors_resilience comparison using the exact phrase",
         "'anchored against', for example 'anchored against Singapore=1.0000 / Tokyo=0.9474';",
-        f"(3) if {city.city_name} appears in the anchors, explicitly write ",
+        "(3) an explicit calibration bracket using this exact format:",
+        "'Calibration: lower_anchor=<city>=<value>, upper_anchor=<city>=<value>';",
+        f"(4) if {city.city_name} appears in the anchors, explicitly write ",
         f"'target city appears in anchors: {city.city_name}=<value>'.",
+        "The score must be consistent with the calibration bracket:",
+        f"- if {city.city_name} appears in city_anchors_resilience, score should be within 0.05 of that anchor value;",
+        "- otherwise, score should lie between the two stated bracket anchors;",
+        "- if you intentionally score outside the bracket, include 'deviation_reason=...' in reasoning.",
         "Do not use placeholders such as 'short reason' or 'N/A'.",
         "Return only valid JSON with this shape:",
         '{"indicators":{"<indicator_id>":{"score":<number>,"reasoning":"<informative 1-2 sentence justification>"}}}',
@@ -53,9 +60,12 @@ def build_r1_prompt(city: CityInput, model: ModelSpec) -> str:
                 f"  definition: {meta.city_level_definition}",
                 f"  city_anchors_resilience: {_format_anchors(meta.city_anchors_resilience)}",
                 f"  {target_anchor_line}",
+                f"  calibration_bracket_hint: {calibration_bracket_hint(indicator, city.city_name)}",
                 "  reasoning_requirements:",
                 "    - include one factual judgment about the city",
                 "    - include exact phrase 'anchored against' with at least one anchor comparison",
+                "    - include exact bracket format: Calibration: lower_anchor=<city>=<value>, upper_anchor=<city>=<value>",
+                "    - keep score inside the bracket unless reasoning includes deviation_reason=...",
                 f"    - {target_clause}",
             ]
         )
@@ -96,6 +106,7 @@ def build_r1_smoke_prompt(
         "Use this schema, replacing the reasoning text with actual evidence-based reasoning:",
         '{"indicators":{"<indicator_id>":{"score":<number>,"reasoning":"<informative justification>"}}}',
         "Reasoning must not be a placeholder and must include anchor calibration with the phrase 'anchored against'.",
+        "Reasoning must include: Calibration: lower_anchor=<city>=<value>, upper_anchor=<city>=<value>.",
         "",
         "Score only these indicators:",
     ]
@@ -115,6 +126,7 @@ def build_r1_smoke_prompt(
                 f"  definition: {meta.city_level_definition}",
                 f"  city_anchors_resilience: {_format_anchors(meta.city_anchors_resilience)}",
                 f"  {target_anchor_line}",
+                f"  calibration_bracket_hint: {calibration_bracket_hint(indicator, city.city_name)}",
             ]
         )
     return "\n".join(lines).rstrip() + "\n"

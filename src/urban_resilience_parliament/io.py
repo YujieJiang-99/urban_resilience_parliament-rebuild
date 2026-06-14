@@ -38,10 +38,11 @@ def agent_round_to_compact_dict(
     agent_round: AgentRound,
     city: CityInput,
     stage: str,
+    validation_warnings: list[dict[str, Any]] | None = None,
 ) -> dict[str, Any]:
     """Serialize one agent round as a compact research-log JSON object."""
 
-    return {
+    payload = {
         "city_id": city.city_id,
         "city_name": city.city_name,
         "round": agent_round.round_number,
@@ -55,6 +56,9 @@ def agent_round_to_compact_dict(
             for score in agent_round.scores
         },
     }
+    if validation_warnings is not None:
+        payload["validation_warnings"] = validation_warnings
+    return payload
 
 
 def rounds_to_compact_payload(

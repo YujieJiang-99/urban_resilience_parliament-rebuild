@@ -7,6 +7,7 @@ from typing import Protocol
 from urllib import request
 from urllib.error import HTTPError, URLError
 
+from .calibration import calibration_bracket_hint, validate_calibration_reasoning
 from .config import LLMConfig, load_llm_config
 from .indicators import RESILIENCE_INDICATORS, get_indicator_meta
 from .personas import ModelSpec
@@ -100,7 +101,11 @@ class MockLLMBackend:
     def _r1_reasoning(self, city: CityInput, persona: ModelSpec, indicator: str) -> str:
         meta = get_indicator_meta(indicator)
         label = meta.alias_name.replace("_", " ")
-        anchor_note = _anchor_reasoning_note(meta.city_anchors_resilience, city.city_name)
+        anchor_note = _anchor_reasoning_note(
+            indicator,
+            meta.city_anchors_resilience,
+            city.city_name,
+        )
         return (
             f"{city.city_name} is scored by {persona.model_name}; "
             f"the mock backend treats {label} as a {meta.dimension} indicator. {anchor_note}"
@@ -461,9 +466,10 @@ def _city_anchor_adjustment(anchors: dict[str, float], city_name: str) -> float:
     return round((anchor - 0.5) * 0.06, 4)
 
 
-def _anchor_reasoning_note(anchors: dict[str, float], city_name: str) -> str:
+def _anchor_reasoning_note(indicator: str, anchors: dict[str, float], city_name: str) -> str:
     anchor_pairs = _representative_anchor_pairs(anchors, city_name)
-    note = f"anchored against {anchor_pairs}."
+    bracket = calibration_bracket_hint(indicator, city_name)
+    note = f"anchored against {anchor_pairs}. {bracket}."
     if city_name in anchors:
         note += f" target city appears in anchors: {city_name}={anchors[city_name]:.4f}."
     return note
@@ -485,15 +491,7 @@ def _representative_anchor_pairs(anchors: dict[str, float], city_name: str) -> s
 
 
 def _validate_anchor_reasoning(indicator: str, reasoning: str, target_city: str) -> None:
-    if "anchored against" not in reasoning:
-        raise ValueError(f"Indicator {indicator} reasoning must include anchor calibration")
-    anchors = get_indicator_meta(indicator).city_anchors_resilience
-    if target_city in anchors:
-        required = f"target city appears in anchors: {target_city}="
-        if required not in reasoning:
-            raise ValueError(
-                f"Indicator {indicator} reasoning must disclose target city anchor"
-            )
+    validate_calibration_reasoning(indicator, reasoning, target_city)
 
 
 def _find_round(rounds: list[AgentRound], agent_id: str) -> AgentRound:
@@ -554,6 +552,7 @@ def _build_repair_prompt(content: str, indicator_ids: list[str]) -> str:
         "'short reason', 'N/A', or 'not provided'. The required JSON shape is "
         "Scores must remain on a 0.0 to 1.0 scale. Reasoning must retain anchor "
         "calibration text from the original output, including 'anchored against' "
+        "the exact 'Calibration: lower_anchor=..., upper_anchor=...' bracket, "
         "and any target-city anchor disclosure if present. The required JSON shape is "
         "{\"indicators\":{\"<indicator_id>\":{\"score\":<number>,"
         "\"reasoning\":\"<reasoning recovered from original output>\"}}}. "
